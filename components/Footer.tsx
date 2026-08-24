@@ -14,6 +14,7 @@ export default function Footer() {
         <a className="footer-email" href={`mailto:${profile.email}`}>
           {profile.email} <ArrowUpRightIcon />
         </a>
+        <p className="footer-contact">{profile.phone} · {profile.location}</p>
       </div>
 
       <div className="section-shell footer-bottom">

@@ -1,30 +1,17 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const title = "Ezequiel Lobo — Desenvolvedor de Software";
+const title = "Ezequiel Lobo Oliveira — Analista de Sistemas";
 const description =
-  "Portfólio de Ezequiel Lobo: projetos full stack, mobile e sistemas distribuídos com Python, Django, Next.js e TypeScript.";
+  "Portfólio de Ezequiel Lobo Oliveira: analista de sistemas com experiência em desenvolvimento full stack, qualidade de software e regras de negócio.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://projeto-portfolio-dinamico.vercel.app"),
   title,
   description,
-  keywords: ["Ezequiel Lobo", "desenvolvedor backend", "desenvolvedor full stack", "Python", "Django", "Next.js", "TypeScript"],
-  authors: [{ name: "Ezequiel Lobo" }],
-  creator: "Ezequiel Lobo",
+  keywords: ["Ezequiel Lobo Oliveira", "analista de sistemas", "desenvolvedor full stack", "C#", "ASP.NET Core", "Angular", "TypeScript"],
+  authors: [{ name: "Ezequiel Lobo Oliveira" }],
+  creator: "Ezequiel Lobo Oliveira",
   alternates: { canonical: "/" },
   openGraph: {
     type: "profile",
@@ -32,8 +19,8 @@ export const metadata: Metadata = {
     url: "/",
     title,
     description,
-    siteName: "Portfólio de Ezequiel Lobo",
-    images: [{ url: "/profile/ezequiel.jpg", width: 460, height: 460, alt: "Ezequiel Lobo" }],
+    siteName: "Portfólio de Ezequiel Lobo Oliveira",
+    images: [{ url: "/profile/ezequiel.jpg", width: 460, height: 460, alt: "Ezequiel Lobo Oliveira" }],
   },
   twitter: {
     card: "summary",
@@ -52,9 +39,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

@@ -30,16 +30,16 @@ export default function Hero() {
 
         <ul className="hero-facts" aria-label="Resumo profissional">
           <li>
-            <strong>Web</strong>
-            <span>do domínio à interface</span>
+            <strong>Sistemas</strong>
+            <span>da demanda à sustentação</span>
           </li>
           <li>
-            <strong>Mobile</strong>
-            <span>produtos offline-first</span>
+            <strong>Full stack</strong>
+            <span>C#, ASP.NET Core e Angular</span>
           </li>
           <li>
             <strong>Qualidade</strong>
-            <span>testes e documentação</span>
+            <span>testes, suporte e documentação</span>
           </li>
         </ul>
       </div>

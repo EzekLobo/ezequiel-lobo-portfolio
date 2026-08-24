@@ -11,12 +11,19 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "Person",
     name: profile.name,
-    jobTitle: "Desenvolvedor de Software",
+    jobTitle: "Analista de Sistemas",
     url: "https://projeto-portfolio-dinamico.vercel.app",
     image: "https://projeto-portfolio-dinamico.vercel.app/profile/ezequiel.jpg",
     email: `mailto:${profile.email}`,
+    telephone: profile.phone,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Ilhéus",
+      addressRegion: "BA",
+      addressCountry: "BR",
+    },
     sameAs: [profile.github, profile.linkedin],
-    knowsAbout: ["Python", "Django", "TypeScript", "Next.js", ".NET", "Angular", "React Native"],
+    knowsAbout: ["C#", "ASP.NET Core", "SQL Server", "Angular", "TypeScript", "APIs REST", "Testes de software"],
   };
 
   return (

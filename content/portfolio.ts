@@ -1,29 +1,107 @@
-import type { JourneyItem, Project } from "@/types";
+import type { CertificationItem, EducationItem, ExperienceItem, Project } from "@/types";
 
 export const profile = {
-  name: "Ezequiel Lobo",
-  role: "Desenvolvedor Backend com visão full stack",
-  headline: "Transformo regras de negócio em software claro, útil e testável.",
+  name: "Ezequiel Lobo Oliveira",
+  role: "Analista de Sistemas | Desenvolvimento de Software",
+  headline: "Transformo demandas reais em software claro, útil e sustentável.",
   introduction:
-    "Graduando em Ciência da Computação e técnico em Informática, desenvolvo aplicações web e mobile com atenção à arquitetura, aos dados e à experiência de quem usa.",
-  email: "ezeklobo.dev@gmail.com",
+    "Bacharel em Ciência da Computação e técnico em Informática, atuo da análise de demandas à entrega e sustentação de soluções, conectando regras de negócio, dados e desenvolvimento full stack.",
+  phone: "(73) 99168-8956",
+  location: "Ilhéus, BA",
+  email: "ezeklobo@gmail.com",
   github: "https://github.com/EzekLobo",
   linkedin: "https://www.linkedin.com/in/ezequiel-lobo-a1336b326/",
 };
 
 export const skills = [
   {
-    area: "Backend",
-    items: ["Python", "Django REST", ".NET", "APIs REST", "SQL"],
+    area: "Desenvolvimento",
+    items: ["C#", "ASP.NET Core", "Angular", "TypeScript", "APIs REST"],
   },
   {
-    area: "Frontend & mobile",
-    items: ["TypeScript", "Next.js", "Angular", "React Native", "Expo"],
+    area: "Dados & qualidade",
+    items: ["SQL Server", "Modelagem de dados", "Testes manuais", "Testes automatizados", "Git"],
   },
   {
-    area: "Engenharia",
-    items: ["Modelagem de dados", "Testes automatizados", "Git", "Arquitetura limpa"],
+    area: "Atuação",
+    items: ["Regras de negócio", "Documentação técnica", "Suporte e sustentação", "Metodologias ágeis"],
   },
+];
+
+export const experiences: ExperienceItem[] = [
+  {
+    title: "Analista de Sistemas",
+    company: "Daten Tecnologia",
+    period: "Abril 2026 — Atual",
+    description:
+      "Atuação em todas as etapas do desenvolvimento de sistemas, da análise das demandas à entrega e sustentação das soluções.",
+    highlights: [
+      "Análise de demandas, definição de regras de negócio e modelagem de bancos de dados",
+      "Desenvolvimento full stack com C#, ASP.NET Core, SQL Server e Angular",
+      "Documentação técnica, suporte, investigação e correção de falhas",
+    ],
+  },
+  {
+    title: "Tutor de Programação",
+    company: "Kodland",
+    period: "Janeiro 2026 — Atual",
+    description:
+      "Ensino de lógica e fundamentos de programação por meio de projetos práticos em aulas online.",
+    highlights: [
+      "Acompanhamento da evolução dos alunos",
+      "Adaptação das explicações ao nível e ao ritmo de cada estudante",
+    ],
+  },
+  {
+    title: "Desenvolvedor Backend e QA",
+    company: "Residência TIC36",
+    period: "Julho 2024 — Outubro 2025",
+    description:
+      "Formação e atuação em qualidade de software e desenvolvimento backend em parceria com a Daten.",
+    highlights: [
+      "Planejamento e execução de testes manuais, integrados e automatizados",
+      "Proposta classificada entre as dez melhores no Hackathon Tecnologia que Transforma, entre aproximadamente 100 equipes",
+      "Desenvolvimento de um sistema de gestão de inventário com .NET em equipe multidisciplinar e metodologia ágil",
+    ],
+  },
+  {
+    title: "Desenvolvedor Full Stack",
+    company: "Residência TIC18",
+    period: "Agosto 2023 — Junho 2024",
+    description:
+      "Formação prática em desenvolvimento de software, avançando dos fundamentos de programação à construção de aplicações web.",
+    highlights: [
+      "Especialização em C#, ASP.NET Core, Angular e TypeScript",
+      "Construção de APIs REST, autenticação, regras de negócio e persistência de dados",
+      "Aplicação de boas práticas de arquitetura, modelagem, versionamento e revisão de código",
+    ],
+  },
+];
+
+export const education: EducationItem[] = [
+  {
+    title: "Bacharelado em Ciência da Computação",
+    institution: "UESC",
+    period: "Agosto 2021 — Junho 2026",
+  },
+  {
+    title: "Técnico em Informática",
+    institution: "IFBA",
+    period: "2018 — 2021",
+  },
+];
+
+export const certifications: CertificationItem[] = [
+  { title: "Fundamentos de IA Generativa", institution: "DIO e Universia", period: "Dezembro 2025 — Janeiro 2026" },
+  { title: "Kanban: análises para implementação", institution: "Alura", period: "Dezembro 2024" },
+  { title: "Scrum: agilidade em seu projeto", institution: "Alura", period: "Novembro 2024" },
+  { title: "Cultura e Métodos Ágeis: pilares para uma imersão avançada", institution: "Alura", period: "Novembro 2024" },
+  { title: "Comunicação assertiva: reduzindo conflitos e frustrações", institution: "Alura", period: "Agosto 2024" },
+];
+
+export const languages = [
+  { name: "Inglês", level: "Básico — em desenvolvimento" },
+  { name: "Espanhol", level: "Intermediário" },
 ];
 
 export const projects: Project[] = [
@@ -82,26 +160,5 @@ export const projects: Project[] = [
     technologies: ["Python", "XML-RPC", "Tkinter", "Threading", "Unittest"],
     repository: "https://github.com/EzekLobo/Sistemas_Distribuidos-UESC",
     visual: "go-board",
-  },
-];
-
-export const journey: JourneyItem[] = [
-  {
-    title: "Ciência da Computação",
-    context: "UESC · Em formação",
-    description:
-      "Base em engenharia de software, sistemas distribuídos, banco de dados e desenvolvimento de aplicações.",
-  },
-  {
-    title: "Desenvolvimento web",
-    context: "Experiência prática",
-    description:
-      "Construção de aplicações com .NET e Angular, aplicando MVC, organização por camadas e modelagem de dados.",
-  },
-  {
-    title: "Formação técnica em Informática",
-    context: "Fundação profissional",
-    description:
-      "Contato inicial com programação, infraestrutura e resolução estruturada de problemas técnicos.",
   },
 ];
