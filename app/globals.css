@@ -5,14 +5,14 @@
   --font-geist-mono: "Courier New", monospace;
   --ink: #0b0c0f;
   --ink-soft: #17191f;
-  --paper: #111318;
-  --paper-deep: #1b1f27;
-  --text: #f3f0e9;
-  --muted: #a6a9b0;
-  --line: rgba(255, 255, 255, 0.14);
-  --accent: #d9533d;
-  --accent-dark: #ff9580;
-  --lime: #cfe879;
+  --paper: #d8d7d2;
+  --paper-deep: #c8c7c1;
+  --text: #1d1f24;
+  --muted: #5e6066;
+  --line: rgba(11, 12, 15, 0.16);
+  --accent: #e3452f;
+  --accent-dark: #b72f20;
+  --lime: #d9ff63;
   --shell: min(1180px, calc(100% - 40px));
 }
 
@@ -244,7 +244,7 @@ a {
 
 .button-secondary {
   border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.35);
 }
 
 .hero-facts {
@@ -401,7 +401,7 @@ a {
   place-items: center;
   border: 1px solid var(--line);
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.35);
   color: var(--text);
   cursor: pointer;
   transition: background 180ms ease, color 180ms ease, transform 180ms ease;
@@ -437,7 +437,7 @@ a {
 }
 
 .project-card:hover {
-  border-color: rgba(255, 255, 255, 0.28);
+  border-color: rgba(11, 12, 15, 0.28);
   box-shadow: 0 22px 46px rgba(0, 0, 0, 0.22);
   transform: translateY(-4px);
 }
@@ -457,7 +457,7 @@ a {
 
 .dashboard-visual {
   min-height: 100%;
-  background: #252b33;
+  background: #dee6ea;
 }
 
 .project-image {
