@@ -7,11 +7,11 @@ export default function Skills() {
         <div className="section-heading section-heading-split">
           <div>
             <p className="section-kicker">02 · Competências</p>
-            <h2>Tecnologia ligada à prática.</h2>
+            <h2>Stack usada para entregar software.</h2>
           </div>
           <p>
-            Competências presentes nos projetos e na minha trajetória — sem
-            porcentagens subjetivas ou listas intermináveis.
+            Tecnologias e práticas presentes nos projetos autorais e na
+            experiência profissional.
           </p>
         </div>
 

@@ -134,6 +134,12 @@ a {
   color: var(--ink);
   font-size: 0.82rem;
   font-weight: 750;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.nav-contact:hover {
+  background: white;
+  transform: translateY(-1px);
 }
 
 .hero {
@@ -258,13 +264,17 @@ a {
 }
 
 .hero-facts strong {
-  font-size: 0.86rem;
+  color: var(--accent-dark);
+  font: 800 0.76rem/1.2 var(--font-geist-mono), monospace;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
 }
 
 .hero-facts span {
   margin-top: 4px;
   color: var(--muted);
   font-size: 0.78rem;
+  line-height: 1.4;
 }
 
 .portrait-wrap {
@@ -361,6 +371,13 @@ a {
   border: 1px solid var(--line);
   border-radius: 24px;
   background: rgba(255, 255, 255, 0.35);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.project-card:hover {
+  border-color: rgba(11, 12, 15, 0.3);
+  box-shadow: 0 22px 46px rgba(11, 12, 15, 0.1);
+  transform: translateY(-4px);
 }
 
 .project-featured {
@@ -874,8 +891,16 @@ a {
 
 .footer-contact {
   margin: 16px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
   color: rgba(11, 12, 15, 0.72);
   font: 600 0.78rem/1.4 var(--font-geist-mono), monospace;
+}
+
+.footer-contact a {
+  border-bottom: 1px solid currentColor;
 }
 
 .footer-bottom {

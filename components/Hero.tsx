@@ -7,7 +7,7 @@ export default function Hero() {
     <header id="inicio" className="hero section-shell">
       <div className="hero-copy">
         <p className="availability">
-          <span aria-hidden="true" /> Aberto a oportunidades em desenvolvimento
+          <span aria-hidden="true" /> Disponível para oportunidades em desenvolvimento de software
         </p>
 
         <p className="hero-role">{profile.role}</p>
@@ -30,16 +30,16 @@ export default function Hero() {
 
         <ul className="hero-facts" aria-label="Resumo profissional">
           <li>
-            <strong>Sistemas</strong>
-            <span>da demanda à sustentação</span>
+            <strong>4 experiências</strong>
+            <span>sistemas, QA e ensino</span>
           </li>
           <li>
-            <strong>Full stack</strong>
-            <span>C#, ASP.NET Core e Angular</span>
+            <strong>.NET + Angular</strong>
+            <span>APIs, dados e interfaces</span>
           </li>
           <li>
-            <strong>Qualidade</strong>
-            <span>testes, suporte e documentação</span>
+            <strong>3 projetos</strong>
+            <span>código público no GitHub</span>
           </li>
         </ul>
       </div>
@@ -56,7 +56,7 @@ export default function Hero() {
           />
           <div className="portrait-caption" aria-hidden="true">
             <span>01</span>
-            <span>Software com propósito</span>
+            <span>Análise · código · qualidade</span>
           </div>
         </div>
       </div>

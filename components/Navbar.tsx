@@ -15,7 +15,7 @@ export default function Navbar() {
         </div>
 
         <a className="nav-contact" href={`mailto:${profile.email}`}>
-          Vamos conversar
+          Entrar em contato
         </a>
       </nav>
     </div>

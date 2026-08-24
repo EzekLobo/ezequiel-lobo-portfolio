@@ -5,10 +5,10 @@ export default function Experience() {
     <section id="trajetoria" className="journey section-shell content-section">
       <div className="section-heading">
         <p className="section-kicker">03 · Experiência</p>
-        <h2>Tecnologia conectada ao negócio.</h2>
+        <h2>Experiência em análise, desenvolvimento e QA.</h2>
         <p>
-          Uma trajetória que combina análise de sistemas, desenvolvimento,
-          qualidade de software e ensino de programação.
+          Atuação profissional e formação que mostram como transformo demandas
+          em software, testes e documentação.
         </p>
       </div>
 

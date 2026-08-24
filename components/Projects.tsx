@@ -9,11 +9,11 @@ export default function Projects() {
       <div className="section-heading section-heading-split">
         <div>
           <p className="section-kicker">01 · Projetos selecionados</p>
-          <h2>Problemas reais, decisões explicadas.</h2>
+          <h2>Projetos com contexto, código e evidências.</h2>
         </div>
         <p>
-          Três projetos que demonstram desenvolvimento full stack, produto mobile
-          e fundamentos de sistemas distribuídos.
+          Uma seleção de aplicações web, mobile e distribuídas com repositórios
+          públicos e decisões técnicas descritas com clareza.
         </p>
       </div>
 

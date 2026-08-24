@@ -3,15 +3,17 @@ import type { CertificationItem, EducationItem, ExperienceItem, Project } from "
 export const profile = {
   name: "Ezequiel Lobo Oliveira",
   role: "Analista de Sistemas | Desenvolvimento de Software",
-  headline: "Transformo demandas reais em software claro, útil e sustentável.",
+  headline: "Analista de Sistemas com foco em .NET, Angular e qualidade de software.",
   introduction:
-    "Bacharel em Ciência da Computação e técnico em Informática, atuo da análise de demandas à entrega e sustentação de soluções, conectando regras de negócio, dados e desenvolvimento full stack.",
+    "Bacharel em Ciência da Computação, com experiência em análise de demandas, regras de negócio, desenvolvimento full stack, testes e sustentação de sistemas.",
   phone: "(73) 99168-8956",
   location: "Ilhéus, BA",
   email: "ezeklobo@gmail.com",
   github: "https://github.com/EzekLobo",
   linkedin: "https://www.linkedin.com/in/ezequiel-lobo-a1336b326/",
 };
+
+export const siteUrl = "https://projeto-portfolio-dinamico-shui.vercel.app";
 
 export const skills = [
   {
@@ -23,7 +25,7 @@ export const skills = [
     items: ["SQL Server", "Modelagem de dados", "Testes manuais", "Testes automatizados", "Git"],
   },
   {
-    area: "Atuação",
+    area: "Práticas de engenharia",
     items: ["Regras de negócio", "Documentação técnica", "Suporte e sustentação", "Metodologias ágeis"],
   },
 ];
@@ -92,7 +94,6 @@ export const education: EducationItem[] = [
 ];
 
 export const certifications: CertificationItem[] = [
-  { title: "Fundamentos de IA Generativa", institution: "DIO e Universia", period: "Dezembro 2025 — Janeiro 2026" },
   { title: "Kanban: análises para implementação", institution: "Alura", period: "Dezembro 2024" },
   { title: "Scrum: agilidade em seu projeto", institution: "Alura", period: "Novembro 2024" },
   { title: "Cultura e Métodos Ágeis: pilares para uma imersão avançada", institution: "Alura", period: "Novembro 2024" },
@@ -107,7 +108,7 @@ export const languages = [
 export const projects: Project[] = [
   {
     title: "InventoryRFID",
-    eyebrow: "Projeto principal · Full stack · TCC",
+    eyebrow: "TCC · Aplicação web · Inventário",
     summary:
       "Protótipo web para gestão de inventário patrimonial com suporte a RFID, auditorias e histórico operacional.",
     problem:
@@ -128,7 +129,7 @@ export const projects: Project[] = [
   },
   {
     title: "AulaPay",
-    eyebrow: "Aplicativo mobile · Produto pessoal",
+    eyebrow: "Produto pessoal · Aplicativo mobile",
     summary:
       "Aplicativo para professores acompanharem aulas, turmas, períodos de pagamento e valores recebidos ou previstos.",
     problem:
@@ -145,7 +146,7 @@ export const projects: Project[] = [
   },
   {
     title: "Go distribuído 9×9",
-    eyebrow: "Sistemas distribuídos · Projeto acadêmico",
+    eyebrow: "Projeto acadêmico · Sistemas distribuídos",
     summary:
       "Jogo de Go para dois jogadores em máquinas diferentes, com interface gráfica e comunicação RPC em Python.",
     problem:

@@ -1,17 +1,18 @@
 import type { Metadata, Viewport } from "next";
+import { profile, siteUrl } from "@/content/portfolio";
 import "./globals.css";
 
-const title = "Ezequiel Lobo Oliveira — Analista de Sistemas";
+const title = "Ezequiel Lobo Oliveira | Analista de Sistemas";
 const description =
-  "Portfólio de Ezequiel Lobo Oliveira: analista de sistemas com experiência em desenvolvimento full stack, qualidade de software e regras de negócio.";
+  "Portfólio de Ezequiel Lobo Oliveira, Analista de Sistemas com experiência em .NET, Angular, APIs REST, testes e regras de negócio.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://projeto-portfolio-dinamico.vercel.app"),
+  metadataBase: new URL(siteUrl),
   title,
   description,
   keywords: ["Ezequiel Lobo Oliveira", "analista de sistemas", "desenvolvedor full stack", "C#", "ASP.NET Core", "Angular", "TypeScript"],
-  authors: [{ name: "Ezequiel Lobo Oliveira" }],
-  creator: "Ezequiel Lobo Oliveira",
+  authors: [{ name: profile.name }],
+  creator: profile.name,
   alternates: { canonical: "/" },
   openGraph: {
     type: "profile",
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
     url: "/",
     title,
     description,
-    siteName: "Portfólio de Ezequiel Lobo Oliveira",
+    siteName: `Portfólio de ${profile.name}`,
     images: [{ url: "/profile/ezequiel.jpg", width: 460, height: 460, alt: "Ezequiel Lobo Oliveira" }],
   },
   twitter: {
