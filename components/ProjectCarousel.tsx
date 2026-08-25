@@ -96,17 +96,28 @@ function ProjectCard({ project, active }: { project: Project; active: boolean })
   return (
     <article data-project-card className="overflow-hidden rounded-3xl border border-white/10 bg-brand-card shadow-xl md:grid md:h-[610px] md:grid-cols-[minmax(290px,.78fr)_minmax(0,1.22fr)]">
       <ProjectVisual project={project} />
-      <div className="flex flex-col p-6 md:p-8">
-        <p className="font-mono text-[10px] tracking-wider text-brand-red uppercase">{project.eyebrow}</p>
-        <h3 className="mt-2 text-3xl font-bold tracking-tight text-white md:text-4xl">{project.title}</h3>
-        <p className="mt-4 text-[15px] leading-6 text-gray-300">{project.summary}</p>
-        <dl className="mt-6 grid gap-4">
-          <div className="border-t border-white/10 pt-3"><dt className="font-mono text-[11px] tracking-wider text-brand-red uppercase">Desafio</dt><dd className="mt-2 text-[13px] leading-5 text-gray-300">{project.problem}</dd></div>
-          <div className="border-t border-white/10 pt-3"><dt className="font-mono text-[11px] tracking-wider text-brand-red uppercase">Minha contribuição</dt><dd className="mt-2 text-[13px] leading-5 text-gray-300">{project.contribution}</dd></div>
+      <div className="flex flex-col p-6 md:p-7">
+        <header>
+          <p className="font-mono text-[10px] tracking-wider text-brand-red uppercase">{project.eyebrow}</p>
+          <h3 className="mt-2 text-3xl font-bold tracking-tight text-white md:text-4xl">{project.title}</h3>
+          <p className="mt-3 text-sm leading-5 text-gray-300">{project.summary}</p>
+        </header>
+
+        <dl className="mt-5 grid gap-3 md:grid-cols-2">
+          <div className="rounded-2xl border border-white/10 bg-white/[0.025] p-3"><dt className="font-mono text-[11px] tracking-wider text-brand-red uppercase">Desafio</dt><dd className="mt-1.5 text-[12px] leading-[1.45] text-gray-200">{project.problem}</dd></div>
+          <div className="rounded-2xl border border-white/10 bg-white/[0.025] p-3"><dt className="font-mono text-[11px] tracking-wider text-brand-red uppercase">Minha contribuição</dt><dd className="mt-1.5 text-[12px] leading-[1.45] text-gray-200">{project.contribution}</dd></div>
         </dl>
-        <ul className="mt-5 grid gap-2" aria-label={`Evidências de ${project.title}`}>{project.evidence.map((item) => <li key={item} className="pl-4 text-[13px] leading-5 text-gray-200 before:relative before:-left-4 before:mr-[-8px] before:text-brand-red before:content-['↳']">{item}</li>)}</ul>
-        <div className="mt-5 flex flex-wrap gap-2">{project.technologies.map((tech) => <span key={tech} className="rounded-full border border-red-500/20 bg-red-500/10 px-2.5 py-1.5 text-[11px] text-red-200">{tech}</span>)}</div>
-        <div className="mt-auto flex flex-wrap gap-4 pt-5"><a className="project-card-link inline-flex items-center gap-2 border-b border-brand-red text-sm font-bold text-white" href={project.repository} target="_blank" rel="noreferrer" tabIndex={active ? undefined : -1}><GitHubIcon className="h-4 w-4" />Ver código</a>{project.demo && <a className="project-card-link inline-flex items-center gap-2 border-b border-white/40 text-sm font-bold text-white" href={project.demo} target="_blank" rel="noreferrer" tabIndex={active ? undefined : -1}><ExternalLinkIcon className="h-4 w-4" />Ver demonstração</a>}</div>
+
+        <section className="mt-4" aria-label={`Evidências de ${project.title}`}>
+          <p className="font-mono text-[11px] tracking-wider text-brand-red uppercase">Evidências técnicas</p>
+          <ul className="mt-2.5 grid gap-1.5">{project.evidence.map((item, index) => <li key={item} className="flex items-start gap-3 border-l-2 border-brand-red/60 pl-3 text-[12px] leading-4 text-gray-200"><span aria-hidden="true" className="font-mono text-[10px] text-brand-red">0{index + 1}</span><span>{item}</span></li>)}</ul>
+        </section>
+
+        <div className="mt-auto border-t border-white/10 pt-4">
+          <p className="font-mono text-[11px] tracking-wider text-gray-500 uppercase">Tecnologias</p>
+          <div className="mt-2.5 flex flex-wrap gap-2">{project.technologies.map((tech) => <span key={tech} className="rounded-full border border-red-500/20 bg-red-500/10 px-2.5 py-1 text-[11px] text-red-200">{tech}</span>)}</div>
+          <div className="mt-4 flex flex-wrap gap-3"><a className="project-card-link inline-flex items-center gap-2 rounded-lg border border-brand-red/30 bg-brand-red/10 px-3 py-2 text-sm font-bold text-white transition-colors hover:bg-brand-red/20" href={project.repository} target="_blank" rel="noreferrer" tabIndex={active ? undefined : -1}><GitHubIcon className="h-4 w-4" />Ver código</a>{project.demo && <a className="project-card-link inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm font-bold text-white transition-colors hover:bg-white/10" href={project.demo} target="_blank" rel="noreferrer" tabIndex={active ? undefined : -1}><ExternalLinkIcon className="h-4 w-4" />Ver demonstração</a>}</div>
+        </div>
       </div>
     </article>
   );
