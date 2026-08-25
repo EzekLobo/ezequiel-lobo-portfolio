@@ -17,7 +17,7 @@ export default function Hero() {
               {firstName}<br />
               <span className="bg-gradient-to-r from-white via-gray-200 to-gray-600 bg-clip-text text-transparent">{restOfName}.</span>
             </h1>
-            <h2 className="pt-2 font-mono text-lg font-medium text-brand-red md:text-2xl">{profile.role}</h2>
+            <h2 className="flex items-center justify-center gap-2 pt-2 font-mono text-lg font-medium text-brand-red md:text-2xl lg:justify-start"><span aria-hidden="true" className="text-white/70">&lt;/&gt;</span>{profile.role}</h2>
             <p className="font-mono text-xs tracking-wide text-gray-500 uppercase">{profile.headline}</p>
           </div>
           <p className="mx-auto max-w-lg border-l-4 border-brand-red/50 pl-4 text-base leading-relaxed text-gray-400 md:text-lg lg:mx-0">{profile.introduction}</p>
