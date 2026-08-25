@@ -54,6 +54,16 @@ a { text-decoration: none; }
   transform: scale(1);
 }
 
+.carousel-slide-inner:not(.is-active) [data-project-content] {
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.carousel-slide-inner.is-active [data-project-content] {
+  opacity: 1;
+  transition: opacity 240ms ease 100ms;
+}
+
 .project-carousel-viewport { touch-action: pan-y; }
 
 .project-card-link:focus-visible,

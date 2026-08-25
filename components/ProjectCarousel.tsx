@@ -6,7 +6,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import type { Project } from "@/types";
 import { ExternalLinkIcon, GitHubIcon } from "./Icons";
 
-const WHEEL_DEBOUNCE = 420;
+const WHEEL_DEBOUNCE = 240;
 
 export default function ProjectCarousel({ projects }: { projects: Project[] }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ align: "center", duration: 32, loop: true, skipSnaps: false });
@@ -42,8 +42,6 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
 
     const onWheel = (event: WheelEvent) => {
       if (event.ctrlKey) return;
-      if (!(event.target instanceof Element) || !event.target.closest("[data-project-card]")) return;
-
       const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
       if (Math.abs(delta) < 8) return;
 
@@ -96,7 +94,7 @@ function ProjectCard({ project, active }: { project: Project; active: boolean })
   return (
     <article data-project-card className="overflow-hidden rounded-3xl border border-white/10 bg-brand-card shadow-xl md:grid md:h-[610px] md:grid-cols-[minmax(290px,.78fr)_minmax(0,1.22fr)]">
       <ProjectVisual project={project} />
-      <div className="flex flex-col p-6 md:p-7">
+      <div data-project-content className="flex flex-col p-6 md:p-7">
         <header>
           <p className="font-mono text-[10px] tracking-wider text-brand-red uppercase">{project.eyebrow}</p>
           <h3 className="mt-2 text-3xl font-bold tracking-tight text-white md:text-4xl">{project.title}</h3>
