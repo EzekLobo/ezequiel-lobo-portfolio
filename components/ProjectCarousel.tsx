@@ -92,7 +92,8 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
 
 function ProjectCard({ project, active }: { project: Project; active: boolean }) {
   return (
-    <article data-project-card className="overflow-hidden rounded-3xl border border-white/10 bg-brand-card shadow-xl md:grid md:h-[610px] md:grid-cols-[minmax(290px,.78fr)_minmax(0,1.22fr)]">
+    <article data-project-card className="relative overflow-hidden rounded-3xl border border-white/10 bg-brand-card shadow-xl md:grid md:h-[610px] md:grid-cols-[minmax(290px,.78fr)_minmax(0,1.22fr)]">
+      <ProjectPreview project={project} />
       <ProjectVisual project={project} />
       <div data-project-content className="flex flex-col p-6 md:p-7">
         <header>
@@ -123,5 +124,10 @@ function ProjectCard({ project, active }: { project: Project; active: boolean })
 
 function ProjectVisual({ project }: { project: Project }) {
   if (!project.image) return null;
-  return <div className="relative h-52 overflow-hidden bg-gray-900 md:h-full"><Image src={project.image} alt={project.imageAlt ?? project.title} fill sizes="(max-width: 768px) 84vw, 390px" className="object-cover" draggable={false} /></div>;
+  return <div data-project-visual className="relative h-52 overflow-hidden bg-gray-900 md:h-full"><Image src={project.image} alt={project.imageAlt ?? project.title} fill sizes="(max-width: 768px) 84vw, 390px" className="object-cover" draggable={false} /></div>;
+}
+
+function ProjectPreview({ project }: { project: Project }) {
+  if (!project.image) return null;
+  return <div data-project-preview aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden bg-gray-900"><Image src={project.image} alt="" fill sizes="(max-width: 768px) 84vw, 860px" className="object-cover brightness-110 saturate-110" draggable={false} /></div>;
 }
