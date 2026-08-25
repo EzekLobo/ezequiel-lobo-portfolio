@@ -13,7 +13,6 @@ export default function Hero() {
       <div className="relative mx-auto grid w-full max-w-7xl items-center gap-12 px-6 py-12 lg:grid-cols-[1.1fr_.9fr] lg:gap-16">
         <div className="order-2 space-y-8 text-center animate-enter lg:order-1 lg:text-left">
           <div className="space-y-2">
-            <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-brand-red">Disponível para oportunidades</p>
             <h1 className="text-5xl leading-[1.05] font-black tracking-tight md:text-7xl">
               {firstName}<br />
               <span className="bg-gradient-to-r from-white via-gray-200 to-gray-600 bg-clip-text text-transparent">{restOfName}.</span>

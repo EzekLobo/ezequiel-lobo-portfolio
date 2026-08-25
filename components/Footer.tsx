@@ -7,8 +7,7 @@ export default function Footer() {
       <div className="pointer-events-none absolute right-0 bottom-0 h-96 w-96 rounded-full bg-brand-red/10 blur-[140px]" />
       <div data-scroll-focus className="relative mx-auto grid w-full max-w-7xl items-center gap-12 px-6 py-16 lg:grid-cols-[.9fr_1.1fr] lg:gap-24">
         <div className="text-center lg:text-left">
-          <p className="font-mono text-xs font-bold tracking-[0.18em] text-brand-red uppercase">Contato profissional</p>
-          <h2 className="mt-4 max-w-xl text-4xl leading-tight font-black tracking-tight text-white md:text-6xl">Vamos construir a próxima entrega?</h2>
+          <h2 className="max-w-xl text-4xl leading-tight font-black tracking-tight text-white md:text-6xl">Vamos construir a próxima entrega?</h2>
           <p className="mx-auto mt-6 max-w-lg border-l-4 border-brand-red/50 pl-4 text-left text-base leading-relaxed text-gray-400 md:text-lg lg:mx-0">Estou disponível para oportunidades de desenvolvimento de software, conversas técnicas e processos seletivos.</p>
           <p className="mt-8 font-mono text-xs tracking-wide text-gray-500 uppercase">{profile.location} · Remoto ou híbrido</p>
         </div>
