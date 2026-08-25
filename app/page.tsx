@@ -12,7 +12,7 @@ export default function Home() {
     name: profile.name,
     jobTitle: "Analista de Sistemas",
     url: siteUrl,
-    image: `${siteUrl}/profile/ezequiel.jpg`,
+    image: `${siteUrl}/profile/ezequiel-profile.png`,
     email: `mailto:${profile.email}`,
     telephone: profile.phone,
     address: { "@type": "PostalAddress", addressLocality: "Ilhéus", addressRegion: "BA", addressCountry: "BR" },
