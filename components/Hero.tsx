@@ -29,14 +29,9 @@ export default function Hero() {
           </div>
         </div>
         <div className="order-1 mt-8 flex flex-col items-center lg:order-2 lg:mt-0">
-          <div className="group relative mx-auto w-56 rotate-3 rounded-2xl border border-white/10 bg-white/5 p-2 shadow-2xl transition-transform duration-500 hover:rotate-0 md:w-80 xl:w-[23rem]">
+          <div className="group relative mx-auto w-56 rotate-3 rounded-2xl border border-white/10 bg-white/5 p-2 shadow-2xl transition-transform duration-500 hover:rotate-0 md:w-80 xl:w-[25rem]">
             <div className="absolute -top-5 -right-2 z-20 inline-flex items-center gap-2 rounded-full border border-green-500/30 bg-green-950/90 px-3 py-1.5 text-[10px] font-bold tracking-widest text-green-400 uppercase shadow-lg backdrop-blur-md md:text-xs"><span className="relative flex h-2 w-2"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" /><span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" /></span>Disponível</div>
-            <div className="relative aspect-[4/5] overflow-hidden rounded-lg bg-brand-card"><Image src="/profile/ezequiel.jpg" alt={profile.name} fill priority sizes="(max-width: 768px) 224px, (max-width: 1280px) 320px, 368px" className="object-cover grayscale-[20%] transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0" /></div>
-          </div>
-          <div className="mt-8 grid w-full max-w-md grid-cols-3 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.035] text-center backdrop-blur-sm">
-            <div className="border-r border-white/10 px-3 py-4"><p className="font-mono text-lg font-bold text-white">03</p><p className="mt-1 text-[10px] tracking-wide text-gray-500 uppercase">Cases</p></div>
-            <div className="border-r border-white/10 px-3 py-4"><p className="font-mono text-xs font-bold text-white">Código</p><p className="mt-1 text-[10px] tracking-wide text-gray-500 uppercase">Público</p></div>
-            <div className="px-3 py-4"><p className="font-mono text-xs font-bold text-white">Demo</p><p className="mt-1 text-[10px] tracking-wide text-gray-500 uppercase">Online</p></div>
+            <div className="relative aspect-[4/5] overflow-hidden rounded-lg bg-brand-card"><Image src="/profile/ezequiel.jpg" alt={profile.name} fill priority sizes="(max-width: 768px) 224px, (max-width: 1280px) 320px, 400px" className="object-cover grayscale-[20%] transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0" /></div>
           </div>
         </div>
       </div>
