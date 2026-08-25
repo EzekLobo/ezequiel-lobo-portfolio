@@ -5,7 +5,6 @@ import { profile } from "@/content/portfolio";
 
 const navItems = [
   { href: "#inicio", label: "/home" },
-  { href: "#experiencia", label: "/experiência" },
   { href: "#projetos", label: "/projetos" },
 ];
 

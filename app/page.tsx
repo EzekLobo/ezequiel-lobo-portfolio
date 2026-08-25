@@ -1,7 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
-import Experience from "@/components/Experience";
 import Footer from "@/components/Footer";
 import { profile, siteUrl } from "@/content/portfolio";
 
@@ -27,7 +26,6 @@ export default function Home() {
       <Navbar />
       <div className="relative z-10 flex-grow">
         <Hero />
-        <Experience />
         <Projects />
       </div>
       <Footer />
