@@ -1,12 +1,13 @@
-import { certifications, education, experiences, languages } from "@/content/portfolio";
+import { experiences } from "@/content/portfolio";
 
 export default function Experience() {
   return (
     <section id="experiencia" className="relative z-10 border-t border-white/5 px-6 py-24">
       <div className="mx-auto max-w-4xl">
         <div className="mb-12">
-          <h2 className="text-3xl font-bold">Experiência <span className="text-brand-red">Profissional</span></h2>
+          <h2 className="text-3xl font-bold">Experiência <span className="text-brand-red">profissional</span></h2>
           <div className="mt-4 h-1 w-20 rounded bg-brand-red" />
+          <p className="mt-5 max-w-2xl text-sm leading-relaxed text-gray-400">Um resumo das experiências que sustentam o trabalho apresentado nos projetos. Formação, cursos e demais detalhes ficam no currículo.</p>
         </div>
         <ol className="relative ml-3 space-y-12 border-l-2 border-white/10 pl-8" aria-label="Experiência profissional">
           {experiences.map((item) => (
@@ -23,16 +24,7 @@ export default function Experience() {
             </li>
           ))}
         </ol>
-        <div className="mt-20 grid gap-10 border-t border-white/10 pt-12 md:grid-cols-2">
-          <InfoList title="Formação acadêmica" items={education.map((item) => ({ primary: item.title, secondary: `${item.institution} • ${item.period}` }))} />
-          <InfoList title="Cursos e certificações" items={certifications.map((item) => ({ primary: item.title, secondary: `${item.institution} • ${item.period}` }))} />
-          <InfoList title="Idiomas" items={languages.map((item) => ({ primary: item.name, secondary: item.level }))} />
-        </div>
       </div>
     </section>
   );
-}
-
-function InfoList({ title, items }: { title: string; items: { primary: string; secondary: string }[] }) {
-  return <div><p className="mb-4 font-mono text-xs tracking-wider text-brand-red uppercase">{title}</p><ul className="space-y-4">{items.map((item) => <li key={item.primary}><strong className="block text-sm text-white">{item.primary}</strong><span className="text-xs text-gray-500">{item.secondary}</span></li>)}</ul></div>;
 }
