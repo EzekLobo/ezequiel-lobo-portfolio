@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Prévia do AulaPay</title>
+  <desc id="desc">Interface conceitual do aplicativo de gestão de aulas e pagamentos.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#111827"/><stop offset="1" stop-color="#07090e"/></linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#182235"/><stop offset="1" stop-color="#0f1725"/></linearGradient>
+    <filter id="shadow" x="-30%" y="-20%" width="160%" height="150%"><feDropShadow dx="0" dy="26" stdDeviation="24" flood-color="#000" flood-opacity=".55"/></filter>
+  </defs>
+  <rect width="720" height="1000" fill="url(#background)"/>
+  <circle cx="650" cy="90" r="240" fill="#ff4d4d" opacity=".12"/>
+  <circle cx="54" cy="900" r="250" fill="#667eea" opacity=".12"/>
+  <text x="70" y="88" fill="#ff6868" font-family="monospace" font-size="18" font-weight="700" letter-spacing="3">PRODUTO MOBILE</text>
+  <text x="70" y="124" fill="#f8fafc" font-family="Arial, sans-serif" font-size="34" font-weight="700">AulaPay</text>
+  <g filter="url(#shadow)">
+    <rect x="110" y="180" width="500" height="730" rx="48" fill="#05070b" stroke="#526178" stroke-width="4"/>
+    <rect x="131" y="220" width="458" height="650" rx="34" fill="url(#screen)"/>
+    <rect x="294" y="196" width="132" height="12" rx="6" fill="#334155"/>
+    <text x="174" y="292" fill="#f8fafc" font-family="Arial, sans-serif" font-size="28" font-weight="700">Olá, professor</text>
+    <text x="174" y="324" fill="#94a3b8" font-family="Arial, sans-serif" font-size="17">Acompanhe suas aulas e pagamentos</text>
+    <rect x="166" y="362" width="388" height="142" rx="22" fill="#ff4d4d"/>
+    <text x="194" y="409" fill="#fff" font-family="Arial, sans-serif" font-size="18">VALORES PREVISTOS</text>
+    <text x="194" y="462" fill="#fff" font-family="Arial, sans-serif" font-size="44" font-weight="700">R$ —</text>
+    <rect x="166" y="530" width="185" height="138" rx="20" fill="#1e293b"/>
+    <text x="188" y="575" fill="#94a3b8" font-family="Arial, sans-serif" font-size="15">AULAS</text>
+    <text x="188" y="627" fill="#f8fafc" font-family="Arial, sans-serif" font-size="34" font-weight="700">Semana</text>
+    <rect x="369" y="530" width="185" height="138" rx="20" fill="#1e293b"/>
+    <text x="391" y="575" fill="#94a3b8" font-family="Arial, sans-serif" font-size="15">STATUS</text>
+    <text x="391" y="627" fill="#f8fafc" font-family="Arial, sans-serif" font-size="29" font-weight="700">Em dia</text>
+    <text x="166" y="727" fill="#f8fafc" font-family="Arial, sans-serif" font-size="21" font-weight="700">Visão financeira</text>
+    <rect x="166" y="752" width="388" height="14" rx="7" fill="#334155"/>
+    <rect x="166" y="752" width="248" height="14" rx="7" fill="#ff4d4d"/>
+    <text x="166" y="813" fill="#94a3b8" font-family="Arial, sans-serif" font-size="16">Aulas, períodos e recebimentos</text>
+  </g>
+</svg>

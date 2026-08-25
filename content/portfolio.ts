@@ -53,6 +53,8 @@ export const projects: Project[] = [
     ],
     technologies: ["React Native", "Expo", "TypeScript", "SQLite", "Vitest"],
     repository: "https://github.com/EzekLobo/professor-pay-app",
+    image: "/projects/aulapay-preview.svg",
+    imageAlt: "Prévia conceitual da interface do aplicativo AulaPay",
   },
   {
     title: "Go distribuído 9×9",
@@ -70,6 +72,7 @@ export const projects: Project[] = [
     ],
     technologies: ["Python", "XML-RPC", "Tkinter", "Threading", "Unittest"],
     repository: "https://github.com/EzekLobo/Sistemas_Distribuidos-UESC",
-    visual: "go-board",
+    image: "/projects/go-distribuido-preview.svg",
+    imageAlt: "Tabuleiro de Go com comunicação distribuída entre host e cliente",
   },
 ];

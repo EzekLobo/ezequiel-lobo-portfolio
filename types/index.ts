@@ -10,6 +10,5 @@ export type Project = {
   demo?: string;
   image?: string;
   imageAlt?: string;
-  visual?: "go-board";
   featured?: boolean;
 };

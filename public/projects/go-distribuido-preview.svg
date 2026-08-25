@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Prévia do projeto Go distribuído</title>
+  <desc id="desc">Tabuleiro de Go e comunicação entre host e cliente via XML-RPC.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#17120d"/><stop offset="1" stop-color="#090807"/></linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="10" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="720" height="1000" fill="url(#background)"/>
+  <path d="M0 810 720 540V1000H0Z" fill="#ff4d4d" opacity=".06"/>
+  <text x="62" y="82" fill="#ff6868" font-family="monospace" font-size="18" font-weight="700" letter-spacing="3">SISTEMAS DISTRIBUÍDOS</text>
+  <text x="62" y="120" fill="#f7f2e8" font-family="Arial, sans-serif" font-size="32" font-weight="700">Go 9×9</text>
+  <rect x="58" y="174" width="604" height="604" rx="26" fill="#d4a455" stroke="#f2d28e" stroke-width="5"/>
+  <g stroke="#4f3414" stroke-width="4" opacity=".9">
+    <path d="M118 234H602M118 294H602M118 354H602M118 414H602M118 474H602M118 534H602M118 594H602M118 654H602M118 714H602"/>
+    <path d="M118 234V714M178 234V714M238 234V714M298 234V714M358 234V714M418 234V714M478 234V714M538 234V714M598 234V714"/>
+  </g>
+  <g fill="#1b1712" stroke="#050505" stroke-width="4"><circle cx="178" cy="294" r="23"/><circle cx="298" cy="354" r="23"/><circle cx="418" cy="414" r="23"/><circle cx="538" cy="534" r="23"/><circle cx="358" cy="594" r="23"/><circle cx="238" cy="654" r="23"/></g>
+  <g fill="#f8f5ed" stroke="#c7bfae" stroke-width="4"><circle cx="238" cy="294" r="23"/><circle cx="358" cy="414" r="23"/><circle cx="478" cy="474" r="23"/><circle cx="298" cy="534" r="23"/><circle cx="478" cy="654" r="23"/><circle cx="598" cy="714" r="23"/></g>
+  <g transform="translate(78 834)">
+    <rect width="564" height="96" rx="20" fill="#16120e" stroke="#5a4330" stroke-width="2"/>
+    <circle cx="38" cy="48" r="9" fill="#ff4d4d" filter="url(#glow)"/>
+    <text x="62" y="42" fill="#f7f2e8" font-family="monospace" font-size="17" font-weight="700">HOST</text>
+    <text x="62" y="66" fill="#a89680" font-family="monospace" font-size="14">XML-RPC</text>
+    <path d="M258 48h66" stroke="#ff6868" stroke-width="3" stroke-dasharray="7 7"/>
+    <text x="354" y="42" fill="#f7f2e8" font-family="monospace" font-size="17" font-weight="700">CLIENTE</text>
+    <text x="354" y="66" fill="#a89680" font-family="monospace" font-size="14">PARTIDA ATIVA</text>
+  </g>
+</svg>
