@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { profile } from "@/content/portfolio";
+import { DownloadIcon, GitHubIcon, LinkedInIcon } from "./Icons";
 
 export default function Hero() {
   const names = profile.name.split(" ");
@@ -21,9 +22,9 @@ export default function Hero() {
           </div>
           <p className="mx-auto max-w-lg border-l-4 border-brand-red/50 pl-4 text-base leading-relaxed text-gray-400 md:text-lg lg:mx-0">{profile.introduction}</p>
           <div className="flex flex-nowrap justify-center gap-3 pt-2 lg:justify-start">
-            <a href="#projetos" className="flex items-center justify-center gap-2 rounded-xl bg-brand-red px-4 py-3.5 font-bold text-white shadow-[0_0_20px_-5px_rgba(255,77,77,.36)] transition-all hover:bg-red-500 md:px-6"><span className="font-mono text-sm">Ver projetos</span><span aria-hidden="true">↓</span></a>
-            <a href={profile.github} target="_blank" rel="noreferrer" className="flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 font-bold text-gray-400 transition-all hover:border-white/30 hover:bg-white/10 hover:text-white md:px-5"><span className="font-mono text-sm">GitHub</span><span aria-hidden="true">↗</span></a>
-            <a href={profile.linkedin} target="_blank" rel="noreferrer" className="flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 font-bold text-gray-400 transition-all hover:border-white/30 hover:bg-white/10 hover:text-white md:px-5"><span className="font-mono text-sm">LinkedIn</span><span aria-hidden="true">↗</span></a>
+            <a href="/cv/ezequiel-lobo-oliveira.pdf" download className="flex items-center justify-center gap-2 rounded-xl bg-brand-red px-4 py-3.5 font-bold text-white shadow-[0_0_20px_-5px_rgba(255,77,77,.36)] transition-all hover:bg-red-500 md:px-6"><DownloadIcon className="h-5 w-5" /><span className="font-mono text-sm">Baixar CV</span></a>
+            <a href={profile.github} target="_blank" rel="noreferrer" className="flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 font-bold text-gray-400 transition-all hover:border-white/30 hover:bg-white/10 hover:text-white md:px-5"><GitHubIcon className="h-5 w-5" /><span className="font-mono text-sm">GitHub</span></a>
+            <a href={profile.linkedin} target="_blank" rel="noreferrer" className="flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 font-bold text-gray-400 transition-all hover:border-white/30 hover:bg-white/10 hover:text-white md:px-5"><LinkedInIcon className="h-5 w-5" /><span className="font-mono text-sm">LinkedIn</span></a>
           </div>
         </div>
         <div className="order-1 mt-8 flex h-full items-center justify-center lg:order-2 lg:mt-0">
