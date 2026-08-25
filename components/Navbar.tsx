@@ -4,96 +4,50 @@ import { useEffect, useRef, useState } from "react";
 import { profile } from "@/content/portfolio";
 
 const navItems = [
-  { href: "#projetos", label: "Projetos" },
-  { href: "#competencias", label: "Competências" },
-  { href: "#trajetoria", label: "Trajetória" },
+  { href: "#inicio", label: "/home" },
+  { href: "#experiencia", label: "/experiência" },
+  { href: "#projetos", label: "/projetos" },
 ];
 
 export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollY = useRef(0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const shouldShow = currentScrollY < 96 || currentScrollY <= lastScrollY.current;
-
-      setIsVisible(shouldShow);
-      lastScrollY.current = currentScrollY;
+    const controlNavbar = () => {
+      const currentY = window.scrollY;
+      setIsVisible(currentY < 100 || currentY <= lastScrollY.current);
+      lastScrollY.current = currentY;
     };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", controlNavbar, { passive: true });
+    return () => window.removeEventListener("scroll", controlNavbar);
   }, []);
 
   useEffect(() => {
-    document.body.classList.toggle("menu-open", isMenuOpen);
-
-    return () => document.body.classList.remove("menu-open");
-  }, [isMenuOpen]);
-
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setIsMenuOpen(false);
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    const closeOnEscape = (event: KeyboardEvent) => event.key === "Escape" && setIsOpen(false);
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
   }, []);
-
-  const closeMenu = () => setIsMenuOpen(false);
 
   return (
     <>
-      <div className={`nav-wrap${isVisible ? "" : " is-hidden"}`}>
-        <nav className="navbar section-shell" aria-label="Navegação principal">
-          <a className="brand" href="#inicio" aria-label="Ir para o início" onClick={closeMenu}>
-            EL<span>.</span>
-          </a>
-
-          <div className="nav-links">
-            {navItems.map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}
-          </div>
-
-          <a className="nav-contact" href={`mailto:${profile.email}`}>
-            Entrar em contato
-          </a>
-
-          <button
-            className="nav-menu-button"
-            type="button"
-            aria-label="Abrir menu de navegação"
-            aria-expanded={isMenuOpen}
-            aria-controls="mobile-navigation"
-            onClick={() => setIsMenuOpen(true)}
-          >
-            <span />
-            <span />
+      <div className={`pointer-events-none fixed top-6 z-50 flex w-full justify-center px-4 transition-transform duration-300 ${isVisible ? "translate-y-0" : "-translate-y-24"}`}>
+        <nav className="pointer-events-auto flex min-w-[300px] items-center justify-between gap-8 rounded-full border border-white/10 bg-white/5 px-6 py-3 shadow-2xl backdrop-blur-xl" aria-label="Navegação principal">
+          <a href="#inicio" className="text-xl font-bold tracking-tighter text-white transition-colors hover:text-brand-red">EL<span className="text-brand-red">.</span></a>
+          <ul className="hidden space-x-6 font-mono text-xs font-medium text-gray-400 md:flex">
+            {navItems.map((item) => <li key={item.href}><a className="transition-colors hover:text-white" href={item.href}>{item.label}</a></li>)}
+          </ul>
+          <a href="#contato" className="hidden rounded-full bg-white/10 px-4 py-2 text-xs font-bold text-white transition-all hover:bg-brand-red md:block">Contato</a>
+          <button type="button" onClick={() => setIsOpen(true)} className="text-white md:hidden" aria-label="Abrir menu de navegação" aria-expanded={isOpen}>
+            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
           </button>
         </nav>
       </div>
-
-      <div
-        id="mobile-navigation"
-        className={`mobile-navigation${isMenuOpen ? " is-open" : ""}`}
-        aria-hidden={!isMenuOpen}
-      >
-        <div className="mobile-navigation-header">
-          <span className="brand">EL<span>.</span></span>
-          <button className="nav-close-button" type="button" aria-label="Fechar menu" onClick={closeMenu}>
-            <span />
-            <span />
-          </button>
-        </div>
-
-        <nav aria-label="Navegação mobile">
-          <a href="#inicio" onClick={closeMenu}>Início</a>
-          {navItems.map((item) => <a key={item.href} href={item.href} onClick={closeMenu}>{item.label}</a>)}
-          <a className="mobile-contact-link" href={`mailto:${profile.email}`} onClick={closeMenu}>Contato</a>
-        </nav>
-
-        <p className="mobile-navigation-meta">Analista de Sistemas · .NET · Angular · QA</p>
+      <div className={`fixed inset-0 z-[60] flex flex-col items-center justify-center gap-8 bg-brand-dark/95 backdrop-blur-xl transition-transform duration-300 md:hidden ${isOpen ? "translate-x-0" : "translate-x-full"}`} aria-hidden={!isOpen}>
+        <button type="button" onClick={() => setIsOpen(false)} className="absolute top-8 right-8 text-white/50" aria-label="Fechar menu"><svg className="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18 18 6M6 6l12 12" /></svg></button>
+        {navItems.map((item) => <a key={item.href} href={item.href} onClick={() => setIsOpen(false)} className="text-2xl font-bold text-white hover:text-brand-red">{item.label.slice(1)}</a>)}
+        <a href={`mailto:${profile.email}`} onClick={() => setIsOpen(false)} className="text-2xl font-bold text-white hover:text-brand-red">contato</a>
       </div>
     </>
   );

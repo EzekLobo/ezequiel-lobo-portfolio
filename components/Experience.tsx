@@ -2,74 +2,37 @@ import { certifications, education, experiences, languages } from "@/content/por
 
 export default function Experience() {
   return (
-    <section id="trajetoria" className="journey section-shell content-section">
-      <div className="section-heading">
-        <p className="section-kicker">03 · Experiência</p>
-        <h2>Experiência em análise, desenvolvimento e QA.</h2>
-        <p>
-          Atuação profissional e formação que mostram como transformo demandas
-          em software, testes e documentação.
-        </p>
-      </div>
-
-      <div className="journey-body">
-        <p className="subsection-label">Experiência profissional</p>
-        <ol className="journey-list" aria-label="Experiência profissional">
-          {experiences.map((item, index) => (
-            <li className="journey-item" key={`${item.company}-${item.title}`}>
-              <span className="journey-index" aria-hidden="true">0{index + 1}</span>
-              <div className="journey-entry">
-                <p className="journey-context">{item.company} · {item.period}</p>
-                <h3>{item.title}</h3>
-                <div className="journey-description">
-                  <p>{item.description}</p>
-                </div>
-                <ul className="experience-highlights">
-                  {item.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
-                </ul>
+    <section id="experiencia" className="relative z-10 border-t border-white/5 px-6 py-24">
+      <div className="mx-auto max-w-4xl">
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold">Experiência <span className="text-brand-red">Profissional</span></h2>
+          <div className="mt-4 h-1 w-20 rounded bg-brand-red" />
+        </div>
+        <ol className="relative ml-3 space-y-12 border-l-2 border-white/10 pl-8" aria-label="Experiência profissional">
+          {experiences.map((item) => (
+            <li key={`${item.company}-${item.title}`} className="group relative">
+              <span className="absolute -left-[41px] top-2 h-5 w-5 rounded-full border-4 border-brand-dark bg-brand-red transition-transform group-hover:scale-125" />
+              <h3 className="text-xl font-bold text-white transition-colors group-hover:text-brand-red">{item.title}</h3>
+              <div className="mt-1 mb-3 flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-3">
+                <span className="text-sm font-semibold text-gray-300">{item.company}</span><span className="hidden text-gray-600 sm:block">•</span><p className="font-mono text-xs tracking-wider text-brand-red uppercase">{item.period}</p>
               </div>
+              <div className="mb-4 rounded-lg border border-white/5 bg-white/5 p-4 shadow-sm"><p className="text-sm leading-relaxed text-gray-400">{item.description}</p></div>
+              <ul className="flex flex-wrap gap-2" aria-label={`Destaques de ${item.title}`}>
+                {item.highlights.map((highlight) => <li key={highlight} className="rounded border border-white/10 px-2 py-1 text-[10px] font-medium text-gray-500 uppercase transition-colors hover:border-brand-red/30 hover:text-gray-300">{highlight}</li>)}
+              </ul>
             </li>
           ))}
         </ol>
-
-        <div className="experience-aside">
-          <div className="aside-block">
-            <p className="subsection-label">Formação acadêmica</p>
-            <ul className="aside-list">
-              {education.map((item) => (
-                <li key={item.title}>
-                  <strong>{item.title}</strong>
-                  <span>{item.institution} · {item.period}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="aside-block">
-            <p className="subsection-label">Cursos e certificações</p>
-            <ul className="aside-list">
-              {certifications.map((item) => (
-                <li key={item.title}>
-                  <strong>{item.title}</strong>
-                  <span>{item.institution} · {item.period}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="aside-block">
-            <p className="subsection-label">Idiomas</p>
-            <ul className="aside-list aside-list-inline">
-              {languages.map((item) => (
-                <li key={item.name}>
-                  <strong>{item.name}</strong>
-                  <span>{item.level}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="mt-20 grid gap-10 border-t border-white/10 pt-12 md:grid-cols-2">
+          <InfoList title="Formação acadêmica" items={education.map((item) => ({ primary: item.title, secondary: `${item.institution} • ${item.period}` }))} />
+          <InfoList title="Cursos e certificações" items={certifications.map((item) => ({ primary: item.title, secondary: `${item.institution} • ${item.period}` }))} />
+          <InfoList title="Idiomas" items={languages.map((item) => ({ primary: item.name, secondary: item.level }))} />
         </div>
       </div>
     </section>
   );
+}
+
+function InfoList({ title, items }: { title: string; items: { primary: string; secondary: string }[] }) {
+  return <div><p className="mb-4 font-mono text-xs tracking-wider text-brand-red uppercase">{title}</p><ul className="space-y-4">{items.map((item) => <li key={item.primary}><strong className="block text-sm text-white">{item.primary}</strong><span className="text-xs text-gray-500">{item.secondary}</span></li>)}</ul></div>;
 }
