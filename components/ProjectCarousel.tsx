@@ -1,45 +1,256 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useCallback, useRef, useState } from "react";
+import type {
+  CSSProperties,
+  PointerEvent as ReactPointerEvent,
+  TransitionEvent as ReactTransitionEvent,
+  WheelEvent as ReactWheelEvent,
+} from "react";
 import type { Project } from "@/types";
 import { ArrowUpRightIcon, ChevronLeftIcon, ChevronRightIcon } from "./Icons";
 
+const SWIPE_THRESHOLD = 56;
+const WHEEL_DEBOUNCE = 420;
+
+type Direction = "previous" | "next";
+
+type CarouselStyle = CSSProperties & {
+  "--carousel-drag-offset": string;
+};
+
 export default function ProjectCarousel({ projects }: { projects: Project[] }) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const activeProject = projects[activeIndex];
+  const [direction, setDirection] = useState<Direction | null>(null);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragOffset, setDragOffset] = useState(0);
+  const [transitionEnabled, setTransitionEnabled] = useState(true);
+
+  const dragRef = useRef({
+    pointerId: -1,
+    startX: 0,
+    currentX: 0,
+    moved: false,
+  });
+  const wheelLockRef = useRef(0);
+  const suppressClickRef = useRef(false);
+
+  const wrapIndex = useCallback(
+    (index: number) => (index + projects.length) % projects.length,
+    [projects.length],
+  );
+
+  const move = useCallback(
+    (nextDirection: Direction) => {
+      if (!projects.length || isAnimating) return;
+
+      setDirection(nextDirection);
+      setDragOffset(0);
+      setTransitionEnabled(true);
+      setIsAnimating(true);
+    },
+    [isAnimating, projects.length],
+  );
+
+  const jumpTo = useCallback(
+    (index: number) => {
+      if (!projects.length || isAnimating || index === activeIndex) return;
+
+      setActiveIndex(wrapIndex(index));
+      setDirection(null);
+      setDragOffset(0);
+      setIsAnimating(false);
+      setTransitionEnabled(false);
+
+      requestAnimationFrame(() => setTransitionEnabled(true));
+    },
+    [activeIndex, isAnimating, projects.length, wrapIndex],
+  );
+
+  const handleTransitionEnd = (event: ReactTransitionEvent<HTMLDivElement>) => {
+    if (event.target !== event.currentTarget || event.propertyName !== "transform" || !direction || !isAnimating) return;
+
+    setActiveIndex((index) => wrapIndex(index + (direction === "next" ? 1 : -1)));
+    setDirection(null);
+    setIsAnimating(false);
+    setTransitionEnabled(false);
+
+    requestAnimationFrame(() => setTransitionEnabled(true));
+  };
+
+  const handleWheel = (event: ReactWheelEvent<HTMLDivElement>) => {
+    if (event.ctrlKey || isDragging || !projects.length) return;
+
+    const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
+    if (Math.abs(delta) < 8) return;
+
+    event.preventDefault();
+
+    const now = performance.now();
+    if (now - wheelLockRef.current < WHEEL_DEBOUNCE || isAnimating) return;
+
+    wheelLockRef.current = now;
+    move(delta > 0 ? "next" : "previous");
+  };
+
+  const handlePointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (event.button !== 0 || isAnimating) return;
+
+    const target = event.target as Element;
+    if (target.closest("a, button")) return;
+
+    dragRef.current = {
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      currentX: event.clientX,
+      moved: false,
+    };
+    event.currentTarget.setPointerCapture(event.pointerId);
+    setIsDragging(true);
+    setTransitionEnabled(false);
+  };
+
+  const handlePointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
+    const drag = dragRef.current;
+    if (!isDragging || drag.pointerId !== event.pointerId) return;
+
+    const offset = event.clientX - drag.startX;
+    drag.currentX = event.clientX;
+    drag.moved = Math.abs(offset) > 8;
+
+    if (drag.moved) {
+      event.preventDefault();
+      setDragOffset(offset);
+    }
+  };
+
+  const finishPointer = (event: ReactPointerEvent<HTMLDivElement>) => {
+    const drag = dragRef.current;
+    if (!isDragging || drag.pointerId !== event.pointerId) return;
+
+    const offset = drag.currentX - drag.startX;
+    const shouldMove = Math.abs(offset) >= SWIPE_THRESHOLD;
+    const nextDirection: Direction = offset < 0 ? "next" : "previous";
+
+    suppressClickRef.current = drag.moved;
+    dragRef.current.pointerId = -1;
+    setIsDragging(false);
+    setDragOffset(0);
+
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+
+    if (shouldMove) {
+      move(nextDirection);
+    } else {
+      setTransitionEnabled(true);
+    }
+  };
+
+  const handleClickCapture = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (!suppressClickRef.current) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+    suppressClickRef.current = false;
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.target !== event.currentTarget || isAnimating) return;
+
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      move("previous");
+    } else if (event.key === "ArrowRight") {
+      event.preventDefault();
+      move("next");
+    } else if (event.key === "Home") {
+      event.preventDefault();
+      jumpTo(0);
+    } else if (event.key === "End") {
+      event.preventDefault();
+      jumpTo(projects.length - 1);
+    }
+  };
+
+  if (!projects.length) return null;
+
+  const visibleProjects = [
+    { project: projects[wrapIndex(activeIndex - 1)], position: "previous" },
+    { project: projects[activeIndex], position: "active" },
+    { project: projects[wrapIndex(activeIndex + 1)], position: "next" },
+  ] as const;
+
+  const trackStyle: CarouselStyle = {
+    "--carousel-drag-offset": `${dragOffset}px`,
+  };
 
   return (
-    <div className="project-carousel" aria-label="Carrossel de projetos" aria-roledescription="carrossel">
+    <div
+      className="project-carousel"
+      role="region"
+      aria-label="Carrossel de projetos"
+      aria-roledescription="carrossel"
+    >
       <div className="carousel-toolbar">
         <p className="carousel-status" aria-live="polite">
           <strong>Projeto {String(activeIndex + 1).padStart(2, "0")}</strong>
-          <span>/ {String(projects.length).padStart(2, "0")}</span>
+          <span> / {String(projects.length).padStart(2, "0")} · {projects[activeIndex].title}</span>
         </p>
-        <div className="carousel-controls">
-          <button
-            type="button"
-            className="carousel-control"
-            aria-label="Projeto anterior"
-            onClick={() => setActiveIndex((index) => Math.max(index - 1, 0))}
-            disabled={activeIndex === 0}
-          >
-            <ChevronLeftIcon />
-          </button>
-          <button
-            type="button"
-            className="carousel-control"
-            aria-label="Próximo projeto"
-            onClick={() => setActiveIndex((index) => Math.min(index + 1, projects.length - 1))}
-            disabled={activeIndex === projects.length - 1}
-          >
-            <ChevronRightIcon />
-          </button>
-        </div>
+        <span className="carousel-hint">Arraste ou use a roda do mouse</span>
       </div>
 
-      <div className="project-carousel-viewport">
-        <ProjectCard project={activeProject} index={activeIndex} />
+      <div
+        className={`project-carousel-viewport ${isDragging ? "is-dragging" : ""}`}
+        tabIndex={0}
+        onKeyDown={handleKeyDown}
+        onWheel={handleWheel}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={finishPointer}
+        onPointerCancel={finishPointer}
+        onClickCapture={handleClickCapture}
+      >
+        <button
+          type="button"
+          className="carousel-control carousel-control-prev"
+          aria-label="Projeto anterior"
+          onClick={() => move("previous")}
+        >
+          <ChevronLeftIcon />
+        </button>
+
+        <div
+          className={`carousel-track ${isAnimating ? `is-sliding-${direction}` : ""} ${transitionEnabled ? "" : "is-transition-disabled"}`}
+          style={trackStyle}
+          onTransitionEnd={handleTransitionEnd}
+        >
+          {visibleProjects.map(({ project, position }, index) => (
+            <div
+              key={`${project.title}-${position}-${activeIndex}`}
+              className={`carousel-slide ${position === "active" ? "is-active" : "is-preview"}`}
+              aria-hidden={position !== "active"}
+            >
+              <ProjectCard
+                project={project}
+                index={wrapIndex(activeIndex + index - 1)}
+                interactive={position === "active"}
+              />
+            </div>
+          ))}
+        </div>
+
+        <button
+          type="button"
+          className="carousel-control carousel-control-next"
+          aria-label="Próximo projeto"
+          onClick={() => move("next")}
+        >
+          <ChevronRightIcon />
+        </button>
       </div>
 
       <div className="carousel-dots" role="tablist" aria-label="Selecionar projeto">
@@ -51,7 +262,7 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
             aria-selected={index === activeIndex}
             aria-label={`Ver projeto ${index + 1}: ${project.title}`}
             className={`carousel-dot ${index === activeIndex ? "is-active" : ""}`}
-            onClick={() => setActiveIndex(index)}
+            onClick={() => jumpTo(index)}
           />
         ))}
       </div>
@@ -59,7 +270,7 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
   );
 }
 
-function ProjectCard({ project, index }: { project: Project; index: number }) {
+function ProjectCard({ project, index, interactive }: { project: Project; index: number; interactive: boolean }) {
   return (
     <article className="project-card project-featured">
       <ProjectVisual project={project} index={index} />
@@ -90,11 +301,11 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
         <div className="project-links">
           {project.demo && (
-            <a href={project.demo} target="_blank" rel="noreferrer">
+            <a href={project.demo} target="_blank" rel="noreferrer" tabIndex={interactive ? undefined : -1}>
               Ver demonstração <ArrowUpRightIcon />
             </a>
           )}
-          <a href={project.repository} target="_blank" rel="noreferrer">
+          <a href={project.repository} target="_blank" rel="noreferrer" tabIndex={interactive ? undefined : -1}>
             Ver código <ArrowUpRightIcon />
           </a>
         </div>
