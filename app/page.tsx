@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
 import Footer from "@/components/Footer";
+import ScrollWindows from "@/components/ScrollWindows";
 import { profile, siteUrl } from "@/content/portfolio";
 
 export default function Home() {
@@ -23,6 +24,7 @@ export default function Home() {
     <main className="relative flex min-h-screen flex-col overflow-x-hidden bg-brand-dark text-white">
       <div className="pointer-events-none fixed inset-0 z-0 bg-grid-pattern bg-[size:40px_40px]" />
       <div className="pointer-events-none fixed inset-0 z-0 bg-gradient-to-b from-transparent via-brand-dark/80 to-brand-dark" />
+      <ScrollWindows />
       <Navbar />
       <div className="relative z-10 flex-grow">
         <Hero />

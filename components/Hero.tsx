@@ -8,7 +8,7 @@ export default function Hero() {
   const restOfName = names.slice(1).join(" ");
 
   return (
-    <header id="inicio" className="relative z-10 flex min-h-screen items-center pt-20">
+    <header id="inicio" data-scroll-window className="relative z-10 flex min-h-screen items-center pt-20">
       <div className="pointer-events-none absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-brand-red/15 blur-[128px]" />
       <div className="relative mx-auto grid w-full max-w-7xl items-center gap-12 px-6 lg:grid-cols-2">
         <div className="order-2 space-y-8 text-center animate-enter lg:order-1 lg:text-left">

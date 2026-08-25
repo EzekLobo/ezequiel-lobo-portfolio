@@ -2,8 +2,8 @@ import { profile } from "@/content/portfolio";
 
 export default function Footer() {
   return (
-    <footer id="contato" className="relative z-10 mt-auto border-t border-white/5 bg-brand-dark/80 text-center backdrop-blur-md">
-      <div className="mx-auto max-w-4xl px-6 py-16">
+    <footer id="contato" data-scroll-window className="relative z-10 mt-auto flex min-h-screen items-center border-t border-white/5 bg-brand-dark/80 text-center backdrop-blur-md">
+      <div data-scroll-focus className="mx-auto w-full max-w-4xl px-6 py-16">
         <h2 className="mb-2 text-2xl font-bold text-white">Vamos construir algo incrível?</h2>
         <p className="mb-6 text-sm text-gray-400">Estou disponível para projetos e oportunidades.</p>
         <div className="flex flex-col items-center justify-center gap-4 font-mono text-sm text-gray-300 md:flex-row md:gap-6">
