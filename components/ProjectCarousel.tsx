@@ -38,6 +38,7 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
     if (!viewport || !emblaApi) return;
     const onWheel = (event: WheelEvent) => {
       if (event.ctrlKey) return;
+      if (!(event.target instanceof Element) || !event.target.closest("[data-project-card]")) return;
       const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
       if (Math.abs(delta) < 8) return;
       event.preventDefault();
@@ -78,7 +79,7 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
 
 function ProjectCard({ project, active }: { project: Project; active: boolean }) {
   return (
-    <article className="overflow-hidden rounded-3xl border border-white/10 bg-brand-card shadow-xl md:grid md:h-[590px] md:grid-cols-[minmax(290px,.78fr)_minmax(0,1.22fr)]">
+    <article data-project-card className="overflow-hidden rounded-3xl border border-white/10 bg-brand-card shadow-xl md:grid md:h-[590px] md:grid-cols-[minmax(290px,.78fr)_minmax(0,1.22fr)]">
       <ProjectVisual project={project} />
       <div className="flex flex-col p-6 md:p-8">
         <p className="font-mono text-[10px] tracking-wider text-brand-red uppercase">{project.eyebrow}</p>
