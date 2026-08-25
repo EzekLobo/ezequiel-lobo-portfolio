@@ -12,13 +12,13 @@ export default function Footer() {
           <p className="mx-auto mt-6 max-w-lg border-l-4 border-brand-red/50 pl-4 text-left text-base leading-relaxed text-gray-400 md:text-lg lg:mx-0">Estou disponível para oportunidades de desenvolvimento de software, conversas técnicas e processos seletivos.</p>
           <p className="mt-8 font-mono text-xs tracking-wide text-gray-500 uppercase">{profile.location} · Remoto ou híbrido</p>
         </div>
-        <div className="rounded-3xl border border-white/10 bg-white/[0.035] p-5 shadow-2xl backdrop-blur-sm sm:p-7">
+        <div className="rounded-3xl border border-white/10 bg-white/[0.035] p-5 text-center shadow-2xl backdrop-blur-sm sm:p-7">
           <p className="font-mono text-[10px] tracking-[0.18em] text-gray-500 uppercase">Canais diretos</p>
           <div className="mt-5 grid gap-3 sm:grid-cols-2">
-            <a href={`mailto:${profile.email}`} className="rounded-2xl border border-white/10 bg-black/20 p-5 text-left transition-colors hover:border-brand-red/50 hover:bg-white/5"><MailIcon className="h-5 w-5 text-brand-red" /><p className="mt-6 text-xs text-gray-500">E-mail</p><p className="mt-1 break-all font-mono text-sm text-white">{profile.email}</p></a>
-            <a href={`tel:${profile.phone.replace(/\D/g, "")}`} className="rounded-2xl border border-white/10 bg-black/20 p-5 text-left transition-colors hover:border-brand-red/50 hover:bg-white/5"><PhoneIcon className="h-5 w-5 text-brand-red" /><p className="mt-6 text-xs text-gray-500">Telefone</p><p className="mt-1 font-mono text-sm text-white">{profile.phone}</p></a>
+            <a href={`mailto:${profile.email}`} className="flex min-h-32 flex-col items-center justify-center rounded-2xl border border-white/10 bg-black/20 p-5 transition-colors hover:border-brand-red/50 hover:bg-white/5"><MailIcon className="h-5 w-5 text-brand-red" /><p className="mt-5 text-xs text-gray-500">E-mail</p><p className="mt-1 break-all font-mono text-sm text-white">{profile.email}</p></a>
+            <a href={`tel:${profile.phone.replace(/\D/g, "")}`} className="flex min-h-32 flex-col items-center justify-center rounded-2xl border border-white/10 bg-black/20 p-5 transition-colors hover:border-brand-red/50 hover:bg-white/5"><PhoneIcon className="h-5 w-5 text-brand-red" /><p className="mt-5 text-xs text-gray-500">Telefone</p><p className="mt-1 font-mono text-sm text-white">{profile.phone}</p></a>
           </div>
-          <div className="mt-5 flex flex-wrap gap-3">
+          <div className="mt-5 flex flex-wrap justify-center gap-3">
             <a href={profile.github} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-xl border border-white/10 px-4 py-3 font-mono text-sm text-gray-300 transition-colors hover:border-white/30 hover:text-white"><GitHubIcon className="h-4 w-4" />GitHub</a>
             <a href={profile.linkedin} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-xl border border-white/10 px-4 py-3 font-mono text-sm text-gray-300 transition-colors hover:border-white/30 hover:text-white"><LinkedInIcon className="h-4 w-4" />LinkedIn</a>
           </div>
