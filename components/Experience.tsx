@@ -14,14 +14,16 @@ export default function Experience() {
 
       <div className="journey-body">
         <p className="subsection-label">Experiência profissional</p>
-        <ol className="journey-list">
+        <ol className="journey-list" aria-label="Experiência profissional">
           {experiences.map((item, index) => (
-            <li key={`${item.company}-${item.title}`}>
-              <span className="journey-index">0{index + 1}</span>
-              <div>
+            <li className="journey-item" key={`${item.company}-${item.title}`}>
+              <span className="journey-index" aria-hidden="true">0{index + 1}</span>
+              <div className="journey-entry">
                 <p className="journey-context">{item.company} · {item.period}</p>
                 <h3>{item.title}</h3>
-                <p>{item.description}</p>
+                <div className="journey-description">
+                  <p>{item.description}</p>
+                </div>
                 <ul className="experience-highlights">
                   {item.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
                 </ul>
