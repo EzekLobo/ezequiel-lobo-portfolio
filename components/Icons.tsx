@@ -55,3 +55,28 @@ export function LinkedInIcon({ className }: IconProps) {
     </svg>
   );
 }
+
+export function ExternalLinkIcon({ className }: IconProps) {
+  return (
+    <svg className={className} aria-hidden="true" viewBox="0 0 24 24" fill="none">
+      <path d="M14 5h5v5M19 5l-8 8M18 13v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+export function MailIcon({ className }: IconProps) {
+  return (
+    <svg className={className} aria-hidden="true" viewBox="0 0 24 24" fill="none">
+      <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.8" />
+      <path d="m4 7 8 6 8-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+export function PhoneIcon({ className }: IconProps) {
+  return (
+    <svg className={className} aria-hidden="true" viewBox="0 0 24 24" fill="none">
+      <path d="M7.4 3.8 5.6 5.6c-.8.8-.9 2.1-.2 3.1 2.6 3.8 5.8 7 9.6 9.6 1 .7 2.3.6 3.1-.2l1.8-1.8-3.1-3.1-1.8 1.2a12.5 12.5 0 0 1-5.4-5.4l1.2-1.8-3.4-3.4Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}

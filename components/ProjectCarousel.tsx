@@ -4,6 +4,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { Project } from "@/types";
+import { ExternalLinkIcon, GitHubIcon } from "./Icons";
 
 const WHEEL_DEBOUNCE = 420;
 
@@ -89,7 +90,7 @@ function ProjectCard({ project, active }: { project: Project; active: boolean })
         </dl>
         <ul className="mt-4 grid gap-1.5" aria-label={`Evidências de ${project.title}`}>{project.evidence.map((item) => <li key={item} className="pl-4 text-xs leading-relaxed text-gray-300 before:relative before:-left-4 before:mr-[-8px] before:text-brand-red before:content-['↳']">{item}</li>)}</ul>
         <div className="mt-4 flex flex-wrap gap-2">{project.technologies.map((tech) => <span key={tech} className="rounded-full border border-red-500/20 bg-red-500/10 px-2.5 py-1 text-[10px] text-red-300">{tech}</span>)}</div>
-        <div className="mt-5 flex flex-wrap gap-4"><a className="project-card-link border-b border-brand-red text-sm font-bold text-white" href={project.repository} target="_blank" rel="noreferrer" tabIndex={active ? undefined : -1}>Ver código ↗</a>{project.demo && <a className="project-card-link border-b border-white/40 text-sm font-bold text-white" href={project.demo} target="_blank" rel="noreferrer" tabIndex={active ? undefined : -1}>Ver demonstração ↗</a>}</div>
+        <div className="mt-5 flex flex-wrap gap-4"><a className="project-card-link inline-flex items-center gap-2 border-b border-brand-red text-sm font-bold text-white" href={project.repository} target="_blank" rel="noreferrer" tabIndex={active ? undefined : -1}><GitHubIcon className="h-4 w-4" />Ver código</a>{project.demo && <a className="project-card-link inline-flex items-center gap-2 border-b border-white/40 text-sm font-bold text-white" href={project.demo} target="_blank" rel="noreferrer" tabIndex={active ? undefined : -1}><ExternalLinkIcon className="h-4 w-4" />Ver demonstração</a>}</div>
       </div>
     </article>
   );
@@ -97,5 +98,18 @@ function ProjectCard({ project, active }: { project: Project; active: boolean })
 
 function ProjectVisual({ project }: { project: Project }) {
   if (project.image) return <div className="relative h-52 overflow-hidden bg-gray-900 md:h-full"><Image src={project.image} alt={project.imageAlt ?? project.title} fill sizes="(max-width: 768px) 84vw, 390px" className="object-cover" draggable={false} /></div>;
-  return <div className="flex h-52 items-center justify-center bg-gradient-to-br from-[#1d1d1d] to-[#080808] p-8 text-center md:h-full"><div className="rounded-xl border border-white/10 bg-white/5 px-5 py-4 font-mono text-sm text-brand-red">{project.visual === "go-board" ? "GO 9×9 · XML-RPC" : "AulaPay · Mobile"}</div></div>;
+  if (project.visual === "go-board") {
+    return <div className="flex h-52 items-center justify-center bg-gradient-to-br from-[#1d1d1d] to-[#080808] p-8 md:h-full"><ArchitectureDiagram title="Comunicação distribuída" nodes={["Host", "XML-RPC", "Cliente"]} footer="Threading · regras do Go · unittest" /></div>;
+  }
+  return <div className="flex h-52 items-center justify-center bg-gradient-to-br from-[#1d1d1d] to-[#080808] p-8 md:h-full"><ArchitectureDiagram title="Fluxo do aplicativo" nodes={["React Native", "Regras de cálculo", "SQLite"]} footer="Persistência offline · Vitest" /></div>;
+}
+
+function ArchitectureDiagram({ title, nodes, footer }: { title: string; nodes: string[]; footer: string }) {
+  return (
+    <div className="w-full max-w-xs rounded-2xl border border-white/10 bg-white/5 p-5 text-center shadow-xl">
+      <p className="font-mono text-[10px] tracking-widest text-brand-red uppercase">{title}</p>
+      <div className="mt-5 flex items-center justify-center gap-2">{nodes.map((node, index) => <div key={node} className="contents"><span className="rounded-lg border border-white/15 bg-black/20 px-2.5 py-2 font-mono text-[10px] text-gray-200">{node}</span>{index < nodes.length - 1 && <span aria-hidden="true" className="text-brand-red">·</span>}</div>)}</div>
+      <p className="mt-5 border-t border-white/10 pt-3 font-mono text-[9px] tracking-wide text-gray-500 uppercase">{footer}</p>
+    </div>
+  );
 }

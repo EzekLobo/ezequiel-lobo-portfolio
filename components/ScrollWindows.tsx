@@ -7,7 +7,8 @@ export default function ScrollWindows() {
     const sections = Array.from(document.querySelectorAll<HTMLElement>("[data-scroll-window]"));
     const centeredSections = new Set<HTMLElement>();
 
-    const focusSection = (section: HTMLElement, behavior: ScrollBehavior = "smooth") => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const focusSection = (section: HTMLElement, behavior: ScrollBehavior = reducedMotion ? "auto" : "smooth") => {
       const focusTarget = section.querySelector<HTMLElement>("[data-scroll-focus]") ?? section;
       const targetRect = focusTarget.getBoundingClientRect();
       const targetTop = window.scrollY + targetRect.top + targetRect.height / 2 - window.innerHeight / 2;

@@ -1,11 +1,11 @@
-import type { CertificationItem, EducationItem, ExperienceItem, Project } from "@/types";
+import type { Project } from "@/types";
 
 export const profile = {
   name: "Ezequiel Lobo Oliveira",
-  role: "Analista de Sistemas | Desenvolvimento de Software",
-  headline: "Analista de Sistemas com foco em .NET, Angular e qualidade de software.",
+  role: "Desenvolvedor de Software Júnior",
+  headline: "APIs, regras de negócio e qualidade de software.",
   introduction:
-    "Bacharel em Ciência da Computação, com experiência em análise de demandas, regras de negócio, desenvolvimento full stack, testes e sustentação de sistemas.",
+    "Profissional em início de carreira, com experiência em análise de demandas, desenvolvimento full stack, testes e sustentação de sistemas. Aqui reúno projetos com código público e decisões técnicas documentadas.",
   phone: "(73) 99168-8956",
   location: "Ilhéus, BA",
   email: "ezeklobo@gmail.com",
@@ -14,96 +14,6 @@ export const profile = {
 };
 
 export const siteUrl = "https://projeto-portfolio-dinamico-shui.vercel.app";
-
-export const skills = [
-  {
-    area: "Desenvolvimento",
-    items: ["C#", "ASP.NET Core", "Angular", "TypeScript", "APIs REST"],
-  },
-  {
-    area: "Dados & qualidade",
-    items: ["SQL Server", "Modelagem de dados", "Testes manuais", "Testes automatizados", "Git"],
-  },
-  {
-    area: "Práticas de engenharia",
-    items: ["Regras de negócio", "Documentação técnica", "Suporte e sustentação", "Metodologias ágeis"],
-  },
-];
-
-export const experiences: ExperienceItem[] = [
-  {
-    title: "Analista de Sistemas",
-    company: "Daten Tecnologia",
-    period: "Abril 2026 — Atual",
-    description:
-      "Atuação em todas as etapas do desenvolvimento de sistemas, da análise das demandas à entrega e sustentação das soluções.",
-    highlights: [
-      "Análise de demandas, definição de regras de negócio e modelagem de bancos de dados",
-      "Desenvolvimento full stack com C#, ASP.NET Core, SQL Server e Angular",
-      "Documentação técnica, suporte, investigação e correção de falhas",
-    ],
-  },
-  {
-    title: "Tutor de Programação",
-    company: "Kodland",
-    period: "Janeiro 2026 — Atual",
-    description:
-      "Ensino de lógica e fundamentos de programação por meio de projetos práticos em aulas online.",
-    highlights: [
-      "Acompanhamento da evolução dos alunos",
-      "Adaptação das explicações ao nível e ao ritmo de cada estudante",
-    ],
-  },
-  {
-    title: "Desenvolvedor Backend e QA",
-    company: "Residência TIC36",
-    period: "Julho 2024 — Outubro 2025",
-    description:
-      "Formação e atuação em qualidade de software e desenvolvimento backend em parceria com a Daten.",
-    highlights: [
-      "Planejamento e execução de testes manuais, integrados e automatizados",
-      "Proposta classificada entre as dez melhores no Hackathon Tecnologia que Transforma, entre aproximadamente 100 equipes",
-      "Desenvolvimento de um sistema de gestão de inventário com .NET em equipe multidisciplinar e metodologia ágil",
-    ],
-  },
-  {
-    title: "Desenvolvedor Full Stack",
-    company: "Residência TIC18",
-    period: "Agosto 2023 — Junho 2024",
-    description:
-      "Formação prática em desenvolvimento de software, avançando dos fundamentos de programação à construção de aplicações web.",
-    highlights: [
-      "Especialização em C#, ASP.NET Core, Angular e TypeScript",
-      "Construção de APIs REST, autenticação, regras de negócio e persistência de dados",
-      "Aplicação de boas práticas de arquitetura, modelagem, versionamento e revisão de código",
-    ],
-  },
-];
-
-export const education: EducationItem[] = [
-  {
-    title: "Bacharelado em Ciência da Computação",
-    institution: "UESC",
-    period: "Agosto 2021 — Junho 2026",
-  },
-  {
-    title: "Técnico em Informática",
-    institution: "IFBA",
-    period: "2018 — 2021",
-  },
-];
-
-export const certifications: CertificationItem[] = [
-  { title: "Kanban: análises para implementação", institution: "Alura", period: "Dezembro 2024" },
-  { title: "Scrum: agilidade em seu projeto", institution: "Alura", period: "Novembro 2024" },
-  { title: "Cultura e Métodos Ágeis: pilares para uma imersão avançada", institution: "Alura", period: "Novembro 2024" },
-  { title: "Comunicação assertiva: reduzindo conflitos e frustrações", institution: "Alura", period: "Agosto 2024" },
-];
-
-export const languages = [
-  { name: "Inglês", level: "Básico — em desenvolvimento" },
-  { name: "Espanhol", level: "Intermediário" },
-];
 
 export const projects: Project[] = [
   {
@@ -114,11 +24,11 @@ export const projects: Project[] = [
     problem:
       "Inventários manuais tornam a conferência lenta e dificultam identificar itens ausentes, desconhecidos ou em locais divergentes.",
     contribution:
-      "Estruturei o domínio, a API Django REST, a interface Next.js e o fluxo de comunicação com leitores RFID, separando autenticação de usuários e dispositivos.",
+      "Estruturei o domínio, a API Django REST, a interface Next.js e a comunicação com leitores RFID. Separei autenticação de usuários e dispositivos para isolar os fluxos operacionais.",
     evidence: [
       "Auditorias comparando itens esperados e detectados",
       "Registro de leituras, movimentações e inconsistências",
-      "Testes de backend, lint e build automatizados",
+      "Testes do backend; lint e build disponíveis no repositório",
     ],
     technologies: ["Python", "Django REST", "Next.js", "TypeScript", "RFID"],
     repository: "https://github.com/EzekLobo/inventory-rfid",
@@ -135,7 +45,7 @@ export const projects: Project[] = [
     problem:
       "Aulas normais e extras, cancelamentos e datas de pagamento geram cálculos repetitivos e pouca previsibilidade financeira.",
     contribution:
-      "Implementei regras de cálculo por período, geração de aulas recorrentes, persistência local e uma suíte de testes para cálculos, validações e armazenamento.",
+      "Implementei regras de cálculo por período, geração de aulas recorrentes, persistência local e testes para cálculos, validações e armazenamento.",
     evidence: [
       "Resumo de valores realizados, recebidos e futuros",
       "Persistência offline com SQLite",

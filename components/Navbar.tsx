@@ -39,7 +39,8 @@ export default function Navbar() {
     const targetRect = target.getBoundingClientRect();
     const targetTop = window.scrollY + targetRect.top + targetRect.height / 2 - window.innerHeight / 2;
     const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-    window.scrollTo({ top: Math.max(0, Math.min(targetTop, maxScroll)), behavior: "smooth" });
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: Math.max(0, Math.min(targetTop, maxScroll)), behavior: reducedMotion ? "auto" : "smooth" });
     window.history.pushState(null, "", href);
     setIsOpen(false);
   };
