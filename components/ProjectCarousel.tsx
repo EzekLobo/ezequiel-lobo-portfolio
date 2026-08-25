@@ -1,12 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type {
   CSSProperties,
   PointerEvent as ReactPointerEvent,
   TransitionEvent as ReactTransitionEvent,
-  WheelEvent as ReactWheelEvent,
 } from "react";
 import type { Project } from "@/types";
 import { ArrowUpRightIcon, ChevronLeftIcon, ChevronRightIcon } from "./Icons";
@@ -17,17 +16,19 @@ const WHEEL_DEBOUNCE = 420;
 type Direction = "previous" | "next";
 
 type CarouselStyle = CSSProperties & {
-  "--carousel-drag-offset": string;
+  transform: string;
 };
 
 export default function ProjectCarousel({ projects }: { projects: Project[] }) {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [direction, setDirection] = useState<Direction | null>(null);
+  const [virtualIndex, setVirtualIndex] = useState(() => projects.length);
   const [isAnimating, setIsAnimating] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState(0);
   const [transitionEnabled, setTransitionEnabled] = useState(true);
+  const [slideStep, setSlideStep] = useState(0);
 
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
   const dragRef = useRef({
     pointerId: -1,
     startX: 0,
@@ -42,58 +43,90 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
     [projects.length],
   );
 
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    const track = trackRef.current;
+    if (!viewport || !track) return;
+
+    const updateStep = () => {
+      const slide = track.querySelector<HTMLElement>(".carousel-slide");
+      if (!slide) return;
+
+      const gap = Number.parseFloat(getComputedStyle(track).gap) || 0;
+      setSlideStep(slide.offsetWidth + gap);
+    };
+
+    updateStep();
+    const observer = new ResizeObserver(updateStep);
+    observer.observe(viewport);
+
+    return () => observer.disconnect();
+  }, [projects.length]);
+
   const move = useCallback(
     (nextDirection: Direction) => {
-      if (!projects.length || isAnimating) return;
+      if (!projects.length || isAnimating || !slideStep) return;
 
-      setDirection(nextDirection);
       setDragOffset(0);
       setTransitionEnabled(true);
       setIsAnimating(true);
+      setVirtualIndex((index) => index + (nextDirection === "next" ? 1 : -1));
     },
-    [isAnimating, projects.length],
+    [isAnimating, projects.length, slideStep],
   );
 
   const jumpTo = useCallback(
     (index: number) => {
-      if (!projects.length || isAnimating || index === activeIndex) return;
+      if (!projects.length || isAnimating || wrapIndex(virtualIndex) === index) return;
 
-      setActiveIndex(wrapIndex(index));
-      setDirection(null);
       setDragOffset(0);
       setIsAnimating(false);
       setTransitionEnabled(false);
+      setVirtualIndex(projects.length + wrapIndex(index));
 
       requestAnimationFrame(() => setTransitionEnabled(true));
     },
-    [activeIndex, isAnimating, projects.length, wrapIndex],
+    [isAnimating, projects.length, virtualIndex, wrapIndex],
   );
 
   const handleTransitionEnd = (event: ReactTransitionEvent<HTMLDivElement>) => {
-    if (event.target !== event.currentTarget || event.propertyName !== "transform" || !direction || !isAnimating) return;
+    if (event.target !== event.currentTarget || event.propertyName !== "transform" || !isAnimating) return;
 
-    setActiveIndex((index) => wrapIndex(index + (direction === "next" ? 1 : -1)));
-    setDirection(null);
     setIsAnimating(false);
-    setTransitionEnabled(false);
 
-    requestAnimationFrame(() => setTransitionEnabled(true));
+    if (virtualIndex === projects.length - 1) {
+      setTransitionEnabled(false);
+      setVirtualIndex(projects.length * 2 - 1);
+      requestAnimationFrame(() => setTransitionEnabled(true));
+    } else if (virtualIndex === projects.length * 2) {
+      setTransitionEnabled(false);
+      setVirtualIndex(projects.length);
+      requestAnimationFrame(() => setTransitionEnabled(true));
+    }
   };
 
-  const handleWheel = (event: ReactWheelEvent<HTMLDivElement>) => {
-    if (event.ctrlKey || isDragging || !projects.length) return;
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
 
-    const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
-    if (Math.abs(delta) < 8) return;
+    const handleWheel = (event: WheelEvent) => {
+      if (event.ctrlKey || isDragging || !projects.length) return;
 
-    event.preventDefault();
+      const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
+      if (Math.abs(delta) < 8) return;
 
-    const now = performance.now();
-    if (now - wheelLockRef.current < WHEEL_DEBOUNCE || isAnimating) return;
+      event.preventDefault();
 
-    wheelLockRef.current = now;
-    move(delta > 0 ? "next" : "previous");
-  };
+      const now = performance.now();
+      if (now - wheelLockRef.current < WHEEL_DEBOUNCE || isAnimating) return;
+
+      wheelLockRef.current = now;
+      move(delta > 0 ? "next" : "previous");
+    };
+
+    viewport.addEventListener("wheel", handleWheel, { passive: false });
+    return () => viewport.removeEventListener("wheel", handleWheel);
+  }, [isAnimating, isDragging, move, projects.length]);
 
   const handlePointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
     if (event.button !== 0 || isAnimating) return;
@@ -178,14 +211,11 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
 
   if (!projects.length) return null;
 
-  const visibleProjects = [
-    { project: projects[wrapIndex(activeIndex - 1)], position: "previous" },
-    { project: projects[activeIndex], position: "active" },
-    { project: projects[wrapIndex(activeIndex + 1)], position: "next" },
-  ] as const;
+  const activeIndex = wrapIndex(virtualIndex);
+  const repeatedProjects = [...projects, ...projects, ...projects];
 
   const trackStyle: CarouselStyle = {
-    "--carousel-drag-offset": `${dragOffset}px`,
+    transform: `translate3d(${-(virtualIndex * slideStep) + dragOffset}px, 0, 0)`,
   };
 
   return (
@@ -204,10 +234,10 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
       </div>
 
       <div
+        ref={viewportRef}
         className={`project-carousel-viewport ${isDragging ? "is-dragging" : ""}`}
         tabIndex={0}
         onKeyDown={handleKeyDown}
-        onWheel={handleWheel}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={finishPointer}
@@ -224,20 +254,21 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
         </button>
 
         <div
-          className={`carousel-track ${isAnimating ? `is-sliding-${direction}` : ""} ${transitionEnabled ? "" : "is-transition-disabled"}`}
+          ref={trackRef}
+          className={`carousel-track ${transitionEnabled ? "" : "is-transition-disabled"}`}
           style={trackStyle}
           onTransitionEnd={handleTransitionEnd}
         >
-          {visibleProjects.map(({ project, position }, index) => (
+          {repeatedProjects.map((project, index) => (
             <div
-              key={`${project.title}-${position}-${activeIndex}`}
-              className={`carousel-slide ${position === "active" ? "is-active" : "is-preview"}`}
-              aria-hidden={position !== "active"}
+              key={`${project.title}-${index}`}
+              className={`carousel-slide ${index === virtualIndex ? "is-active" : "is-preview"}`}
+              aria-hidden={index !== virtualIndex}
             >
               <ProjectCard
                 project={project}
-                index={wrapIndex(activeIndex + index - 1)}
-                interactive={position === "active"}
+                index={wrapIndex(index)}
+                interactive={index === virtualIndex}
               />
             </div>
           ))}

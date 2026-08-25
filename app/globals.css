@@ -599,21 +599,11 @@ body.menu-open {
 }
 
 .carousel-track {
-  --carousel-step: calc(var(--carousel-slide-width) + var(--carousel-slide-gap));
   display: flex;
   gap: var(--carousel-slide-gap);
   width: max-content;
-  transform: translate3d(calc(-1 * var(--carousel-step) + var(--carousel-drag-offset)), 0, 0);
   transition: transform 440ms cubic-bezier(0.22, 0.75, 0.22, 1);
   will-change: transform;
-}
-
-.carousel-track.is-sliding-previous {
-  transform: translate3d(var(--carousel-drag-offset), 0, 0);
-}
-
-.carousel-track.is-sliding-next {
-  transform: translate3d(calc(-2 * var(--carousel-step)), 0, 0);
 }
 
 .carousel-track.is-transition-disabled {
