@@ -28,13 +28,8 @@ export default function Projects() {
         return;
       }
 
-      if (entry.intersectionRatio >= 0.45 && !centeredInCurrentVisit.current) {
-        const target = focusTarget.getBoundingClientRect();
-        const centeredEnough = target.top >= window.innerHeight * 0.15 && target.bottom <= window.innerHeight * 0.85;
-        if (!centeredEnough) centerProjects();
-        else centeredInCurrentVisit.current = true;
-      }
-    }, { threshold: [0, 0.45] });
+      if (!centeredInCurrentVisit.current) centerProjects();
+    }, { rootMargin: "0px 0px -15% 0px", threshold: 0 });
 
     observer.observe(section);
     window.addEventListener("hashchange", handleHash);
