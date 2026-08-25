@@ -59,10 +59,6 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
   if (!projects.length) return null;
   return (
     <div className="relative w-full select-none" role="region" aria-label="Carrossel de projetos" aria-roledescription="carrossel">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 pb-2">
-        <p className="font-mono text-xs tracking-widest text-gray-500 uppercase" aria-live="polite"><span className="font-bold text-brand-red">Projeto {String(activeIndex + 1).padStart(2, "0")}</span> / {String(projects.length).padStart(2, "0")}</p>
-        <p className="hidden font-mono text-[10px] tracking-wider text-gray-600 uppercase sm:block">Arraste, use a roda ou as setas</p>
-      </div>
       <div className="relative">
         <div className="pointer-events-none absolute top-0 left-0 z-10 h-full w-32 bg-gradient-to-r from-brand-dark via-brand-dark/80 to-transparent" />
         <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-32 bg-gradient-to-l from-brand-dark via-brand-dark/80 to-transparent" />
