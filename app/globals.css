@@ -568,7 +568,7 @@ body.menu-open {
 .project-carousel-viewport {
   position: relative;
   overflow: hidden;
-  padding: 26px calc((100% - var(--carousel-slide-width)) / 2) 32px;
+  padding: 26px 0 32px;
   touch-action: pan-y;
   cursor: grab;
 }
@@ -594,38 +594,28 @@ body.menu-open {
   background: linear-gradient(270deg, var(--paper) 0%, transparent 100%);
 }
 
-.project-carousel-viewport.is-dragging {
-  cursor: grabbing;
-}
-
 .carousel-track {
   display: flex;
   gap: var(--carousel-slide-gap);
-  width: max-content;
-  transition: transform 440ms cubic-bezier(0.22, 0.75, 0.22, 1);
-  will-change: transform;
-}
-
-.carousel-track.is-transition-disabled {
-  transition: none;
 }
 
 .carousel-slide {
   flex: 0 0 var(--carousel-slide-width);
   width: var(--carousel-slide-width);
   min-width: 0;
+}
+
+.carousel-slide-inner {
   opacity: 0.5;
   transform: scale(0.94);
   transform-origin: center;
   transition: opacity 440ms ease, transform 440ms cubic-bezier(0.22, 0.75, 0.22, 1);
-  pointer-events: none;
 }
 
-.carousel-slide.is-active {
+.carousel-slide.is-active .carousel-slide-inner {
   z-index: 2;
   opacity: 1;
   transform: scale(1);
-  pointer-events: auto;
 }
 
 .project-card {

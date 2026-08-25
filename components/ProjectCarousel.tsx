@@ -1,116 +1,54 @@
 "use client";
 
+import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
-import type {
-  CSSProperties,
-  PointerEvent as ReactPointerEvent,
-  TransitionEvent as ReactTransitionEvent,
-} from "react";
 import type { Project } from "@/types";
 import { ArrowUpRightIcon, ChevronLeftIcon, ChevronRightIcon } from "./Icons";
 
-const SWIPE_THRESHOLD = 56;
 const WHEEL_DEBOUNCE = 420;
 
-type Direction = "previous" | "next";
-
-type CarouselStyle = CSSProperties & {
-  transform: string;
-};
-
 export default function ProjectCarousel({ projects }: { projects: Project[] }) {
-  const [virtualIndex, setVirtualIndex] = useState(() => projects.length);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragOffset, setDragOffset] = useState(0);
-  const [transitionEnabled, setTransitionEnabled] = useState(true);
-  const [slideStep, setSlideStep] = useState(0);
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: "center",
+    duration: 32,
+    loop: true,
+    skipSnaps: false,
+  });
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const viewportRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const dragRef = useRef({
-    pointerId: -1,
-    startX: 0,
-    currentX: 0,
-    moved: false,
-  });
   const wheelLockRef = useRef(0);
-  const suppressClickRef = useRef(false);
 
-  const wrapIndex = useCallback(
-    (index: number) => (index + projects.length) % projects.length,
-    [projects.length],
-  );
+  const setViewport = useCallback((node: HTMLDivElement | null) => {
+    viewportRef.current = node;
+    emblaRef(node);
+  }, [emblaRef]);
+
+  const scrollPrevious = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+  const scrollTo = useCallback((index: number) => emblaApi?.scrollTo(index), [emblaApi]);
 
   useEffect(() => {
-    const viewport = viewportRef.current;
-    const track = trackRef.current;
-    if (!viewport || !track) return;
+    if (!emblaApi) return;
 
-    const updateStep = () => {
-      const slide = track.querySelector<HTMLElement>(".carousel-slide");
-      if (!slide) return;
+    const updateActiveIndex = () => setActiveIndex(emblaApi.selectedScrollSnap());
+    updateActiveIndex();
+    emblaApi.on("select", updateActiveIndex);
+    emblaApi.on("reInit", updateActiveIndex);
 
-      const gap = Number.parseFloat(getComputedStyle(track).gap) || 0;
-      setSlideStep(slide.offsetWidth + gap);
+    return () => {
+      emblaApi.off("select", updateActiveIndex);
+      emblaApi.off("reInit", updateActiveIndex);
     };
-
-    updateStep();
-    const observer = new ResizeObserver(updateStep);
-    observer.observe(viewport);
-
-    return () => observer.disconnect();
-  }, [projects.length]);
-
-  const move = useCallback(
-    (nextDirection: Direction) => {
-      if (!projects.length || isAnimating || !slideStep) return;
-
-      setDragOffset(0);
-      setTransitionEnabled(true);
-      setIsAnimating(true);
-      setVirtualIndex((index) => index + (nextDirection === "next" ? 1 : -1));
-    },
-    [isAnimating, projects.length, slideStep],
-  );
-
-  const jumpTo = useCallback(
-    (index: number) => {
-      if (!projects.length || isAnimating || wrapIndex(virtualIndex) === index) return;
-
-      setDragOffset(0);
-      setIsAnimating(false);
-      setTransitionEnabled(false);
-      setVirtualIndex(projects.length + wrapIndex(index));
-
-      requestAnimationFrame(() => setTransitionEnabled(true));
-    },
-    [isAnimating, projects.length, virtualIndex, wrapIndex],
-  );
-
-  const handleTransitionEnd = (event: ReactTransitionEvent<HTMLDivElement>) => {
-    if (event.target !== event.currentTarget || event.propertyName !== "transform" || !isAnimating) return;
-
-    setIsAnimating(false);
-
-    if (virtualIndex === projects.length - 1) {
-      setTransitionEnabled(false);
-      setVirtualIndex(projects.length * 2 - 1);
-      requestAnimationFrame(() => setTransitionEnabled(true));
-    } else if (virtualIndex === projects.length * 2) {
-      setTransitionEnabled(false);
-      setVirtualIndex(projects.length);
-      requestAnimationFrame(() => setTransitionEnabled(true));
-    }
-  };
+  }, [emblaApi]);
 
   useEffect(() => {
     const viewport = viewportRef.current;
     if (!viewport) return;
 
     const handleWheel = (event: WheelEvent) => {
-      if (event.ctrlKey || isDragging || !projects.length) return;
+      if (event.ctrlKey || !projects.length || !emblaApi) return;
 
       const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
       if (Math.abs(delta) < 8) return;
@@ -118,105 +56,36 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
       event.preventDefault();
 
       const now = performance.now();
-      if (now - wheelLockRef.current < WHEEL_DEBOUNCE || isAnimating) return;
+      if (now - wheelLockRef.current < WHEEL_DEBOUNCE) return;
 
       wheelLockRef.current = now;
-      move(delta > 0 ? "next" : "previous");
+      if (delta > 0) scrollNext();
+      else scrollPrevious();
     };
 
     viewport.addEventListener("wheel", handleWheel, { passive: false });
     return () => viewport.removeEventListener("wheel", handleWheel);
-  }, [isAnimating, isDragging, move, projects.length]);
-
-  const handlePointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
-    if (event.button !== 0 || isAnimating) return;
-
-    const target = event.target as Element;
-    if (target.closest("a, button")) return;
-
-    dragRef.current = {
-      pointerId: event.pointerId,
-      startX: event.clientX,
-      currentX: event.clientX,
-      moved: false,
-    };
-    event.currentTarget.setPointerCapture(event.pointerId);
-    setIsDragging(true);
-    setTransitionEnabled(false);
-  };
-
-  const handlePointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
-    const drag = dragRef.current;
-    if (!isDragging || drag.pointerId !== event.pointerId) return;
-
-    const offset = event.clientX - drag.startX;
-    drag.currentX = event.clientX;
-    drag.moved = Math.abs(offset) > 8;
-
-    if (drag.moved) {
-      event.preventDefault();
-      setDragOffset(offset);
-    }
-  };
-
-  const finishPointer = (event: ReactPointerEvent<HTMLDivElement>) => {
-    const drag = dragRef.current;
-    if (!isDragging || drag.pointerId !== event.pointerId) return;
-
-    const offset = drag.currentX - drag.startX;
-    const shouldMove = Math.abs(offset) >= SWIPE_THRESHOLD;
-    const nextDirection: Direction = offset < 0 ? "next" : "previous";
-
-    suppressClickRef.current = drag.moved;
-    dragRef.current.pointerId = -1;
-    setIsDragging(false);
-    setDragOffset(0);
-
-    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
-      event.currentTarget.releasePointerCapture(event.pointerId);
-    }
-
-    if (shouldMove) {
-      move(nextDirection);
-    } else {
-      setTransitionEnabled(true);
-    }
-  };
-
-  const handleClickCapture = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (!suppressClickRef.current) return;
-
-    event.preventDefault();
-    event.stopPropagation();
-    suppressClickRef.current = false;
-  };
+  }, [emblaApi, projects.length, scrollNext, scrollPrevious]);
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (event.target !== event.currentTarget || isAnimating) return;
+    if (event.target !== event.currentTarget) return;
 
     if (event.key === "ArrowLeft") {
       event.preventDefault();
-      move("previous");
+      scrollPrevious();
     } else if (event.key === "ArrowRight") {
       event.preventDefault();
-      move("next");
+      scrollNext();
     } else if (event.key === "Home") {
       event.preventDefault();
-      jumpTo(0);
+      scrollTo(0);
     } else if (event.key === "End") {
       event.preventDefault();
-      jumpTo(projects.length - 1);
+      scrollTo(projects.length - 1);
     }
   };
 
   if (!projects.length) return null;
-
-  const activeIndex = wrapIndex(virtualIndex);
-  const repeatedProjects = [...projects, ...projects, ...projects];
-
-  const trackStyle: CarouselStyle = {
-    transform: `translate3d(${-(virtualIndex * slideStep) + dragOffset}px, 0, 0)`,
-  };
 
   return (
     <div
@@ -234,42 +103,32 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
       </div>
 
       <div
-        ref={viewportRef}
-        className={`project-carousel-viewport ${isDragging ? "is-dragging" : ""}`}
+        ref={setViewport}
+        className="project-carousel-viewport"
         tabIndex={0}
         onKeyDown={handleKeyDown}
-        onPointerDown={handlePointerDown}
-        onPointerMove={handlePointerMove}
-        onPointerUp={finishPointer}
-        onPointerCancel={finishPointer}
-        onClickCapture={handleClickCapture}
       >
         <button
           type="button"
           className="carousel-control carousel-control-prev"
           aria-label="Projeto anterior"
-          onClick={() => move("previous")}
+          onClick={scrollPrevious}
         >
           <ChevronLeftIcon />
         </button>
 
         <div
-          ref={trackRef}
-          className={`carousel-track ${transitionEnabled ? "" : "is-transition-disabled"}`}
-          style={trackStyle}
-          onTransitionEnd={handleTransitionEnd}
+          className="carousel-track"
         >
-          {repeatedProjects.map((project, index) => (
+          {projects.map((project, index) => (
             <div
-              key={`${project.title}-${index}`}
-              className={`carousel-slide ${index === virtualIndex ? "is-active" : "is-preview"}`}
-              aria-hidden={index !== virtualIndex}
+              key={project.title}
+              className={`carousel-slide ${index === activeIndex ? "is-active" : "is-preview"}`}
+              aria-hidden={index !== activeIndex}
             >
-              <ProjectCard
-                project={project}
-                index={wrapIndex(index)}
-                interactive={index === virtualIndex}
-              />
+              <div className="carousel-slide-inner">
+                <ProjectCard project={project} index={index} interactive={index === activeIndex} />
+              </div>
             </div>
           ))}
         </div>
@@ -278,7 +137,7 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
           type="button"
           className="carousel-control carousel-control-next"
           aria-label="Próximo projeto"
-          onClick={() => move("next")}
+          onClick={scrollNext}
         >
           <ChevronRightIcon />
         </button>
@@ -293,7 +152,7 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
             aria-selected={index === activeIndex}
             aria-label={`Ver projeto ${index + 1}: ${project.title}`}
             className={`carousel-dot ${index === activeIndex ? "is-active" : ""}`}
-            onClick={() => jumpTo(index)}
+            onClick={() => scrollTo(index)}
           />
         ))}
       </div>
