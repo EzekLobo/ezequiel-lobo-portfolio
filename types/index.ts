@@ -10,5 +10,6 @@ export type Project = {
   demo?: string;
   image?: string;
   imageAlt?: string;
+  presentation?: "desktop" | "mobile";
   featured?: boolean;
 };

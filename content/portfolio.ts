@@ -35,6 +35,7 @@ export const projects: Project[] = [
     repository: "https://github.com/EzekLobo/inventory-rfid",
     demo: "https://inventory-rfid.vercel.app",
     image: "/projects/inventory-rfid.png",
+    presentation: "desktop",
     imageAlt: "Dashboard do sistema InventoryRFID",
     featured: true,
   },
@@ -55,6 +56,7 @@ export const projects: Project[] = [
     technologies: ["React Native", "Expo", "TypeScript", "SQLite", "Vitest"],
     repository: "https://github.com/EzekLobo/professor-pay-app",
     image: "/projects/aulapay-dashboard.jpeg",
+    presentation: "mobile",
     imageAlt: "Tela inicial do aplicativo AulaPay com aulas e turmas",
   },
   {
@@ -74,6 +76,7 @@ export const projects: Project[] = [
     technologies: ["Python", "XML-RPC", "Tkinter", "Threading", "Unittest"],
     repository: "https://github.com/EzekLobo/Sistemas_Distribuidos-UESC",
     image: "/projects/go-distribuido-preview.svg",
+    presentation: "desktop",
     imageAlt: "Tabuleiro de Go com comunicação distribuída entre host e cliente",
   },
 ];

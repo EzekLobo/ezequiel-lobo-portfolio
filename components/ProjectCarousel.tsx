@@ -97,10 +97,23 @@ function ProjectCard({ project, active }: { project: Project; active: boolean })
 
 function ProjectVisual({ project }: { project: Project }) {
   if (!project.image) return null;
-  return <div className="relative h-52 overflow-hidden bg-gray-900 md:h-full"><Image src={project.image} alt={project.imageAlt ?? project.title} fill sizes="(max-width: 768px) 84vw, 390px" className="object-cover" draggable={false} /></div>;
+  return <div className={`project-visual project-visual--${project.presentation ?? "desktop"}`}><ProjectDevice project={project} /></div>;
+}
+
+function ProjectDevice({ project, preview = false }: { project: Project; preview?: boolean }) {
+  const presentation = project.presentation ?? "desktop";
+
+  return (
+    <div className={`project-device project-device--${presentation} ${preview ? "project-device--preview" : ""}`}>
+      <div className="project-device__screen">
+        <Image src={project.image!} alt={preview ? "" : project.imageAlt ?? project.title} fill sizes={preview ? "280px" : "(max-width: 768px) 84vw, 390px"} className="object-cover" draggable={false} />
+      </div>
+      {presentation === "mobile" ? <span aria-hidden="true" className="project-device__notch" /> : <span aria-hidden="true" className="project-device__stand" />}
+    </div>
+  );
 }
 
 function ProjectPreview({ project }: { project: Project }) {
   if (!project.image) return null;
-  return <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 grid place-items-center bg-brand-card/95 p-8"><div className="relative h-full w-full max-h-72 max-w-72 overflow-hidden rounded-2xl border border-white/10 bg-gray-900 shadow-xl"><Image src={project.image} alt="" fill sizes="(max-width: 768px) 58vw, 280px" className="object-contain" draggable={false} /></div></div>;
+  return <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 grid place-items-center bg-brand-card/95 p-8"><ProjectDevice project={project} preview /></div>;
 }

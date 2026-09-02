@@ -177,6 +177,101 @@ a { text-decoration: none; }
 
 .project-carousel-viewport { touch-action: pan-y; }
 
+.project-visual {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  min-height: 13rem;
+  place-items: center;
+  overflow: hidden;
+  padding: 1.5rem;
+  background:
+    radial-gradient(circle at 50% 100%, rgb(255 77 77 / 0.16), transparent 55%),
+    linear-gradient(145deg, #141414, #070707 72%);
+}
+
+.project-visual::before {
+  position: absolute;
+  z-index: -1;
+  width: 13rem;
+  aspect-ratio: 1;
+  border: 1px solid rgb(255 255 255 / 0.06);
+  border-radius: 999px;
+  content: "";
+}
+
+.project-device {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 30rem);
+  filter: drop-shadow(0 1.5rem 1.5rem rgb(0 0 0 / 0.46));
+}
+
+.project-device__screen {
+  position: relative;
+  overflow: hidden;
+  background: #020202;
+}
+
+.project-device--desktop {
+  margin-bottom: 1.35rem;
+  padding: .42rem .42rem .7rem;
+  border: 1px solid rgb(255 255 255 / 0.18);
+  border-radius: .9rem .9rem .45rem .45rem;
+  background: linear-gradient(145deg, #2c2c2f, #080809 28%, #1d1d20);
+}
+
+.project-device--desktop .project-device__screen {
+  aspect-ratio: 16 / 10;
+  border-radius: .48rem;
+}
+
+.project-device__stand {
+  position: absolute;
+  bottom: -1.32rem;
+  left: 50%;
+  width: 32%;
+  height: 1.15rem;
+  border-radius: 0 0 .65rem .65rem;
+  background: linear-gradient(90deg, #242428, #55555a 50%, #242428);
+  clip-path: polygon(25% 0, 75% 0, 100% 100%, 0 100%);
+  translate: -50% 0;
+}
+
+.project-device--mobile {
+  width: min(58%, 13rem);
+  padding: .42rem;
+  border: 4px solid #151518;
+  border-radius: 2rem;
+  background: linear-gradient(145deg, #38383d, #101012 26%, #29292e);
+}
+
+.project-device--mobile .project-device__screen {
+  aspect-ratio: 9 / 19.5;
+  border-radius: 1.55rem;
+}
+
+.project-device__notch {
+  position: absolute;
+  top: .42rem;
+  left: 50%;
+  width: 36%;
+  height: .78rem;
+  border-radius: 0 0 .7rem .7rem;
+  background: #101012;
+  translate: -50% 0;
+}
+
+.project-device--preview { transform: scale(.92); }
+.project-device--preview.project-device--desktop { max-width: 17.5rem; }
+.project-device--preview.project-device--mobile { width: min(52%, 9.5rem); }
+
+@media (min-width: 768px) {
+  .project-visual { min-height: 0; height: 100%; padding: 2rem; }
+  .project-visual::before { width: 19rem; }
+  .project-device--mobile { width: min(62%, 14rem); }
+}
+
 .project-card-link:focus-visible,
 .carousel-control:focus-visible,
 .carousel-dot:focus-visible {
