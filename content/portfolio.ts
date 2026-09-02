@@ -14,7 +14,7 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/ezequiel-lobo-a1336b326/",
 };
 
-export const siteUrl = "https://projeto-portfolio-dinamico-shui.vercel.app";
+export const siteUrl = "https://ezeklobo-ezeklobos-projects.vercel.app";
 
 export const projects: Project[] = [
   {
