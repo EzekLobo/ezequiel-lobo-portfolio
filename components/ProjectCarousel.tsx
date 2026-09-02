@@ -2,21 +2,16 @@
 
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { Project } from "@/types";
 import { ExternalLinkIcon, GitHubIcon } from "./Icons";
-
-const WHEEL_DEBOUNCE = 240;
 
 export default function ProjectCarousel({ projects }: { projects: Project[] }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ align: "center", duration: 32, loop: true, skipSnaps: false });
   const [activeIndex, setActiveIndex] = useState(0);
   const [selectedSnap, setSelectedSnap] = useState(0);
-  const viewportRef = useRef<HTMLDivElement>(null);
-  const wheelLockRef = useRef(0);
   const loopedProjects = [...projects, ...projects, ...projects];
 
-  const setViewport = useCallback((node: HTMLDivElement | null) => { viewportRef.current = node; emblaRef(node); }, [emblaRef]);
   const previous = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const next = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
   const scrollTo = useCallback((index: number) => emblaApi?.scrollTo(index), [emblaApi]);
@@ -36,28 +31,6 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
     return () => { emblaApi.off("select", update); emblaApi.off("reInit", update); };
   }, [emblaApi, projects.length]);
 
-  useEffect(() => {
-    const viewport = viewportRef.current;
-    if (!viewport || !emblaApi) return;
-
-    const onWheel = (event: WheelEvent) => {
-      if (event.ctrlKey) return;
-      const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
-      if (Math.abs(delta) < 8) return;
-
-      event.preventDefault();
-      const now = performance.now();
-      if (now - wheelLockRef.current < WHEEL_DEBOUNCE) return;
-
-      wheelLockRef.current = now;
-      if (delta > 0) next();
-      else previous();
-    };
-
-    viewport.addEventListener("wheel", onWheel, { passive: false });
-    return () => viewport.removeEventListener("wheel", onWheel);
-  }, [emblaApi, next, previous]);
-
   const onKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.target !== event.currentTarget) return;
     if (event.key === "ArrowLeft") { event.preventDefault(); previous(); }
@@ -72,7 +45,7 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
         <div className="pointer-events-none absolute top-0 left-0 z-10 h-full w-32 bg-gradient-to-r from-brand-dark via-brand-dark/80 to-transparent" />
         <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-32 bg-gradient-to-l from-brand-dark via-brand-dark/80 to-transparent" />
         <button type="button" className="carousel-control absolute top-1/2 left-4 z-20 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-white/20 bg-white/10 text-3xl text-white shadow-lg backdrop-blur-md transition-all hover:scale-110 hover:bg-brand-red md:left-6" aria-label="Projeto anterior" onClick={previous}>‹</button>
-        <div ref={setViewport} tabIndex={0} onKeyDown={onKeyDown} className="project-carousel-viewport cursor-grab overflow-hidden py-8 active:cursor-grabbing">
+        <div ref={emblaRef} tabIndex={0} onKeyDown={onKeyDown} className="project-carousel-viewport cursor-grab overflow-hidden py-8 active:cursor-grabbing">
           <div className="flex gap-8 px-[8vw] md:px-[calc(50%_-_430px)]">
             {loopedProjects.map((project, index) => (
               <div key={`${project.title}-${index}`} className="w-[84vw] shrink-0 md:w-[860px]" aria-hidden={index !== selectedSnap}>
