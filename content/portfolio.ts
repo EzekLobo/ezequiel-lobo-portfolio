@@ -54,8 +54,8 @@ export const projects: Project[] = [
     ],
     technologies: ["React Native", "Expo", "TypeScript", "SQLite", "Vitest"],
     repository: "https://github.com/EzekLobo/professor-pay-app",
-    image: "/projects/aulapay-preview.svg",
-    imageAlt: "Prévia conceitual da interface do aplicativo AulaPay",
+    image: "/projects/aulapay-dashboard.jpeg",
+    imageAlt: "Tela inicial do aplicativo AulaPay com aulas e turmas",
   },
   {
     title: "Go distribuído 9×9",

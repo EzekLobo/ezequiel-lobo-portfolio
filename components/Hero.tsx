@@ -13,13 +13,13 @@ export default function Hero() {
       <div className="pointer-events-none absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-brand-red/15 blur-[128px]" />
       <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 px-6 py-24 lg:grid-cols-[1.1fr_.9fr] lg:gap-16 lg:py-0">
         <div className="order-2 min-w-0 space-y-8 text-center animate-enter lg:order-1 lg:text-left">
-          <div className="space-y-2">
+          <div className="inline-block max-w-full space-y-2">
             <h1 className="text-4xl leading-[1.05] font-black tracking-tight sm:text-5xl md:text-7xl">
               {firstName}{" "}
               <span className="bg-gradient-to-r from-white via-gray-200 to-gray-600 bg-clip-text text-transparent">{restOfName}</span>
             </h1>
-            <h2 className="pt-2 font-mono text-sm font-medium text-brand-red sm:text-lg md:text-2xl"><span aria-hidden="true" className="text-white/70">&lt; </span>{profile.role}<span aria-hidden="true" className="text-white/70"> /&gt;</span></h2>
-            <p className="font-mono text-[11px] tracking-wide text-gray-500 uppercase sm:text-xs">{profile.headline}</p>
+            <h2 className="pt-2 text-center font-mono text-sm font-medium text-brand-red sm:text-lg md:text-2xl"><span aria-hidden="true" className="text-white/70">&lt; </span>{profile.role}<span aria-hidden="true" className="text-white/70"> /&gt;</span></h2>
+            <p className="text-center font-mono text-[11px] tracking-wide text-gray-500 uppercase sm:text-xs">{profile.headline}</p>
           </div>
           <p className="mx-auto w-full max-w-lg border-l-4 border-brand-red/50 pl-4 text-justify text-base leading-relaxed text-gray-400 md:text-lg lg:mx-0">{profile.introduction}</p>
           <div className="flex w-full flex-wrap justify-center gap-2 pt-2 lg:justify-start">
