@@ -2,7 +2,7 @@ import type { CSSProperties } from "react";
 import type { IconType } from "react-icons";
 import { FaDatabase } from "react-icons/fa6";
 import { TbBrandCSharp } from "react-icons/tb";
-import { SiDocker, SiDotnet, SiGit, SiNextdotjs, SiPython, SiReact, SiTypescript } from "react-icons/si";
+import { SiDocker, SiDotnet, SiGit, SiGithub, SiNextdotjs, SiPython, SiReact, SiTypescript } from "react-icons/si";
 
 type Technology = {
   label: string;
@@ -20,10 +20,11 @@ const innerRing: Technology[] = [
 ];
 
 const outerRing: Technology[] = [
-  { label: "Python", Icon: SiPython, color: "#ffd343", angle: 20 },
-  { label: "Docker", Icon: SiDocker, color: "#2496ed", angle: 110 },
-  { label: "SQL", Icon: FaDatabase, color: "#a9d8ff", angle: 200 },
-  { label: "Git", Icon: SiGit, color: "#f1502f", angle: 290 },
+  { label: "Python", Icon: SiPython, color: "#ffd343", angle: 18 },
+  { label: "Docker", Icon: SiDocker, color: "#2496ed", angle: 90 },
+  { label: "SQL", Icon: FaDatabase, color: "#a9d8ff", angle: 162 },
+  { label: "Git", Icon: SiGit, color: "#f1502f", angle: 234 },
+  { label: "GitHub", Icon: SiGithub, color: "#f5f5f5", angle: 306 },
 ];
 
 function Orbit({ technologies, className }: { technologies: Technology[]; className: string }) {
@@ -46,7 +47,7 @@ function Orbit({ technologies, className }: { technologies: Technology[]; classN
 
 export default function OrbitingTechnologies() {
   return (
-    <div className="pointer-events-none absolute inset-[-19%]" aria-label="Tecnologias principais: TypeScript, React, Next.js, ASP.NET, C#, Python, Docker, SQL e Git">
+    <div className="pointer-events-none absolute inset-[-19%]" aria-label="Tecnologias principais: TypeScript, React, Next.js, ASP.NET, C#, Python, Docker, SQL, Git e GitHub">
       <span className="tech-orbit-ring tech-orbit-ring--inner" />
       <span className="tech-orbit-ring tech-orbit-ring--outer" />
       <Orbit technologies={innerRing} className="tech-orbit tech-orbit--inner" />

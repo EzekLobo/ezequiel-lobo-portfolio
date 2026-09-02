@@ -32,10 +32,15 @@ export default function Hero() {
           <div className="relative mx-auto flex h-[25rem] w-64 items-center justify-center sm:h-[32rem] sm:w-[25rem] lg:h-[36rem] lg:w-[28rem] xl:h-[38rem] xl:w-[30rem]">
             <div className="absolute bottom-0 z-0 aspect-square w-[96%]">
               <div aria-hidden="true" className="absolute inset-0 rounded-full border border-white/[0.06] bg-[#151515] shadow-[0_0_70px_rgba(0,0,0,.7)]" />
+            </div>
+            <div className="absolute bottom-0 z-20 aspect-square w-[96%]">
               <OrbitingTechnologies />
             </div>
             <div className="hero-portrait-bottom-mask relative z-10 h-full w-full">
               <Image src="/profile/ezequiel-portrait-circle-cut.png" alt={profile.name} fill priority sizes="(max-width: 640px) 256px, (max-width: 1024px) 400px, 480px" className="object-contain object-bottom grayscale contrast-110" />
+            </div>
+            <div aria-hidden="true" className="absolute inset-0 z-30 [clip-path:inset(0_0_50%_0)]">
+              <Image src="/profile/ezequiel-portrait-circle-cut.png" alt="" fill priority sizes="(max-width: 640px) 256px, (max-width: 1024px) 400px, 480px" className="object-contain object-bottom grayscale contrast-110" />
             </div>
           </div>
         </div>
