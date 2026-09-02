@@ -34,7 +34,7 @@ export default function Hero() {
               <div aria-hidden="true" className="absolute inset-0 rounded-full border border-white/[0.06] bg-[#151515] shadow-[0_0_70px_rgba(0,0,0,.7)]" />
               <OrbitingTechnologies />
             </div>
-            <div className="relative z-10 h-full w-full">
+            <div className="hero-portrait-mask absolute inset-0 z-10">
               <Image src="/profile/ezequiel-portrait-circle-cut.png" alt={profile.name} fill priority sizes="(max-width: 640px) 256px, (max-width: 1024px) 400px, 480px" className="object-contain object-bottom grayscale contrast-110" />
             </div>
           </div>

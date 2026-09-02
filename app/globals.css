@@ -104,6 +104,50 @@ a { text-decoration: none; }
 
 .tech-orbit--outer .tech-orbit-item__content { border-color: rgb(255 77 77 / 0.46); }
 
+.hero-portrait-mask {
+  -webkit-mask-image:
+    linear-gradient(to bottom, #000 0 38.56%, transparent 38.56%),
+    radial-gradient(ellipse 48% 30.72% at 50% 69.28%, #000 99.7%, transparent 100%);
+  -webkit-mask-composite: source-over;
+  mask-image:
+    linear-gradient(to bottom, #000 0 38.56%, transparent 38.56%),
+    radial-gradient(ellipse 48% 30.72% at 50% 69.28%, #000 99.7%, transparent 100%);
+  mask-composite: add;
+}
+
+@media (min-width: 640px) {
+  .hero-portrait-mask {
+    -webkit-mask-image:
+      linear-gradient(to bottom, #000 0 25%, transparent 25%),
+      radial-gradient(ellipse 48% 37.5% at 50% 62.5%, #000 99.7%, transparent 100%);
+    mask-image:
+      linear-gradient(to bottom, #000 0 25%, transparent 25%),
+      radial-gradient(ellipse 48% 37.5% at 50% 62.5%, #000 99.7%, transparent 100%);
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-portrait-mask {
+    -webkit-mask-image:
+      linear-gradient(to bottom, #000 0 25.333%, transparent 25.333%),
+      radial-gradient(ellipse 48% 37.333% at 50% 62.667%, #000 99.7%, transparent 100%);
+    mask-image:
+      linear-gradient(to bottom, #000 0 25.333%, transparent 25.333%),
+      radial-gradient(ellipse 48% 37.333% at 50% 62.667%, #000 99.7%, transparent 100%);
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero-portrait-mask {
+    -webkit-mask-image:
+      linear-gradient(to bottom, #000 0 24.211%, transparent 24.211%),
+      radial-gradient(ellipse 48% 37.895% at 50% 62.105%, #000 99.7%, transparent 100%);
+    mask-image:
+      linear-gradient(to bottom, #000 0 24.211%, transparent 24.211%),
+      radial-gradient(ellipse 48% 37.895% at 50% 62.105%, #000 99.7%, transparent 100%);
+  }
+}
+
 @media (max-width: 639px) {
   .tech-orbit-item__content { width: 2rem; box-shadow: 0 8px 18px rgb(0 0 0 / 0.42), 0 0 0 3px rgb(5 5 5 / 0.72); }
   .tech-orbit-item__content svg { width: .92rem; height: .92rem; }
