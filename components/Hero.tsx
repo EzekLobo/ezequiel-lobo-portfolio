@@ -4,7 +4,7 @@ import { DownloadIcon, GitHubIcon, LinkedInIcon } from "./Icons";
 import OrbitingTechnologies from "./OrbitingTechnologies";
 
 export default function Hero() {
-  const names = profile.name.split(" ");
+  const names = profile.displayName.split(" ");
   const firstName = names[0];
   const restOfName = names.slice(1).join(" ");
 

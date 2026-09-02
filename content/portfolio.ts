@@ -2,6 +2,7 @@ import type { Project } from "@/types";
 
 export const profile = {
   name: "Ezequiel Lobo Oliveira",
+  displayName: "Ezequiel Lobo",
   role: "Analista de Sistemas Júnior",
   headline: "APIs, regras de negócio e qualidade de software.",
   introduction:
