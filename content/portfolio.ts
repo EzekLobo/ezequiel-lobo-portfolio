@@ -2,7 +2,7 @@ import type { Project } from "@/types";
 
 export const profile = {
   name: "Ezequiel Lobo Oliveira",
-  role: "Desenvolvedor de Software Júnior",
+  role: "Analista de Sistemas Júnior",
   headline: "APIs, regras de negócio e qualidade de software.",
   introduction:
     "Atuo no desenvolvimento de sistemas, transformando ideias, necessidades e problemas do dia a dia em soluções de software, partindo da compreensão das demandas para organizar regras de negócio e desenvolver aplicações que apoiem pessoas e processos.",
