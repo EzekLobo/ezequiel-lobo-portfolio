@@ -29,7 +29,7 @@ export default function Hero() {
           </div>
         </div>
         <div className="order-1 flex min-h-[25rem] w-full items-center justify-center sm:min-h-[32rem] lg:order-2 lg:min-h-[36rem] xl:min-h-[38rem]">
-          <div className="relative flex h-[25rem] w-64 items-center justify-center sm:h-[32rem] sm:w-[25rem] lg:h-[36rem] lg:w-[28rem] xl:h-[38rem] xl:w-[30rem]">
+          <div className="relative flex h-[25rem] w-64 items-center justify-center sm:h-[32rem] sm:w-[25rem] lg:h-[36rem] lg:w-[28rem] lg:translate-x-3 lg:-translate-y-16 xl:h-[38rem] xl:translate-x-[4.5rem] xl:-translate-y-[5.5rem]">
             <div className="absolute bottom-0 z-0 aspect-square w-[96%]">
               <div aria-hidden="true" className="absolute inset-0 rounded-full border border-white/[0.06] bg-[#151515] shadow-[0_0_70px_rgba(0,0,0,.7)]" />
             </div>
