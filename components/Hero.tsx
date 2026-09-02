@@ -15,13 +15,13 @@ export default function Hero() {
         <div className="order-2 space-y-8 text-center animate-enter lg:order-1 lg:text-left">
           <div className="space-y-2">
             <h1 className="text-4xl leading-[1.05] font-black tracking-tight sm:text-5xl md:text-7xl">
-              {firstName}<br />
-              <span className="bg-gradient-to-r from-white via-gray-200 to-gray-600 bg-clip-text text-transparent">{restOfName}.</span>
+              {firstName}{" "}
+              <span className="bg-gradient-to-r from-white via-gray-200 to-gray-600 bg-clip-text text-transparent">{restOfName}</span>
             </h1>
             <h2 className="pt-2 font-mono text-sm font-medium text-brand-red sm:text-lg md:text-2xl"><span aria-hidden="true" className="text-white/70">&lt; </span>{profile.role}<span aria-hidden="true" className="text-white/70"> /&gt;</span></h2>
             <p className="font-mono text-[11px] tracking-wide text-gray-500 uppercase sm:text-xs">{profile.headline}</p>
           </div>
-          <p className="mx-auto max-w-lg border-l-4 border-brand-red/50 pl-4 text-base leading-relaxed text-gray-400 md:text-lg lg:mx-0">{profile.introduction}</p>
+          <p className="mx-auto max-w-lg border-l-4 border-brand-red/50 pl-4 text-justify text-base leading-relaxed text-gray-400 md:text-lg lg:mx-0">{profile.introduction}</p>
           <div className="flex flex-nowrap justify-center gap-3 pt-2 lg:justify-start">
             <a href="/cv/ezequiel-lobo-oliveira.pdf" download className="flex items-center justify-center gap-2 rounded-xl bg-brand-red px-4 py-3.5 font-bold text-white shadow-[0_0_20px_-5px_rgba(255,77,77,.36)] transition-all hover:bg-red-500 md:px-6"><DownloadIcon className="h-5 w-5" /><span className="font-mono text-sm">Baixar CV</span></a>
             <a href={profile.github} target="_blank" rel="noreferrer" className="flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 font-bold text-gray-400 transition-all hover:border-white/30 hover:bg-white/10 hover:text-white md:px-5"><GitHubIcon className="h-5 w-5" /><span className="font-mono text-sm">GitHub</span></a>
