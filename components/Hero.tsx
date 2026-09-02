@@ -9,9 +9,9 @@ export default function Hero() {
   const restOfName = names.slice(1).join(" ");
 
   return (
-    <header id="inicio" data-scroll-window className="relative z-10 flex min-h-screen items-center pt-20">
+    <header id="inicio" data-scroll-window className="relative z-10 flex min-h-[100svh] items-center">
       <div className="pointer-events-none absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-brand-red/15 blur-[128px]" />
-      <div className="relative mx-auto grid w-full max-w-7xl items-center gap-12 px-6 py-12 lg:grid-cols-[1.1fr_.9fr] lg:gap-16">
+      <div className="relative mx-auto grid w-full max-w-7xl items-center gap-12 px-6 py-24 lg:grid-cols-[1.1fr_.9fr] lg:gap-16 lg:py-0">
         <div className="order-2 space-y-8 text-center animate-enter lg:order-1 lg:text-left">
           <div className="space-y-2">
             <h1 className="text-4xl leading-[1.05] font-black tracking-tight sm:text-5xl md:text-7xl">
