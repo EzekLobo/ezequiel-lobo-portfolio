@@ -48,12 +48,11 @@ export default function Navbar() {
   return (
     <>
       <div className={`pointer-events-none fixed top-0 z-50 flex w-full justify-center px-6 transition-transform duration-300 ${isVisible ? "translate-y-0" : "-translate-y-24"}`}>
-        <nav className="pointer-events-auto flex h-20 w-full max-w-7xl items-center justify-between" aria-label="Navegação principal">
-          <a href="#inicio" onClick={focusWindow} className="font-mono text-xl font-black tracking-[-0.12em] text-white transition-colors hover:text-brand-red">EL<span className="text-brand-red">.</span></a>
-          <ul className="hidden items-center gap-8 font-mono text-[11px] font-medium tracking-[0.16em] text-gray-500 uppercase md:flex">
+        <nav className="pointer-events-auto flex h-20 w-full max-w-7xl items-center justify-end md:grid md:grid-cols-[1fr_auto_1fr]" aria-label="Navegação principal">
+          <ul className="hidden items-center gap-8 font-mono text-[11px] font-medium tracking-[0.16em] text-gray-500 uppercase md:col-start-2 md:flex">
             {navItems.map((item) => <li key={item.href}><a className="border-b border-transparent pb-1 transition-all hover:border-brand-red hover:text-white" href={item.href} onClick={focusWindow}>{item.label}</a></li>)}
           </ul>
-          <a href="#contato" onClick={focusWindow} className="hidden border-b border-brand-red pb-1 font-mono text-[11px] font-bold tracking-[0.16em] text-white uppercase transition-colors hover:text-brand-red md:block">Contato</a>
+          <a href="#contato" onClick={focusWindow} className="hidden justify-self-end border-b border-brand-red pb-1 font-mono text-[11px] font-bold tracking-[0.16em] text-white uppercase transition-colors hover:text-brand-red md:block">Contato</a>
           <button type="button" onClick={() => setIsOpen(true)} className="flex h-9 w-9 items-center justify-center border border-white/15 text-white transition-colors hover:border-brand-red hover:text-brand-red md:hidden" aria-label="Abrir menu de navegação" aria-expanded={isOpen}>
             <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
           </button>
