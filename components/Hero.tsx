@@ -29,10 +29,11 @@ export default function Hero() {
           </div>
         </div>
         <div className="order-1 mt-8 flex flex-col items-center lg:order-2 lg:mt-0">
-          <div className="relative mx-auto flex aspect-square w-64 items-center justify-center sm:w-[22rem] lg:w-[25rem]">
+          <div className="relative mx-auto flex h-[25rem] w-64 items-center justify-center sm:h-[32rem] sm:w-[25rem] lg:h-[36rem] lg:w-[28rem] xl:h-[38rem] xl:w-[30rem]">
             <OrbitingTechnologies />
-            <div className="group relative z-10 w-[72%] rotate-3 rounded-2xl border border-white/10 bg-white/5 p-2 shadow-2xl transition-transform duration-500 hover:rotate-0">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-lg bg-brand-card"><Image src="/profile/ezequiel-profile.png" alt={profile.name} fill priority sizes="(max-width: 640px) 208px, (max-width: 1280px) 254px, 288px" className="object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-105" /></div>
+            <div aria-hidden="true" className="absolute top-[12%] z-0 aspect-square w-[84%] rounded-full border border-white/[0.06] bg-[#151515] shadow-[0_0_70px_rgba(0,0,0,.7)]" />
+            <div className="relative z-10 h-full w-full overflow-hidden">
+              <Image src="/profile/ezequiel-portrait-full.png" alt={profile.name} fill priority sizes="(max-width: 640px) 256px, (max-width: 1024px) 400px, 480px" className="object-contain object-bottom grayscale contrast-110" />
             </div>
           </div>
         </div>
