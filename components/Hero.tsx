@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { profile } from "@/content/portfolio";
 import { DownloadIcon, GitHubIcon, LinkedInIcon } from "./Icons";
+import OrbitingTechnologies from "./OrbitingTechnologies";
 
 export default function Hero() {
   const names = profile.name.split(" ");
@@ -28,9 +29,11 @@ export default function Hero() {
           </div>
         </div>
         <div className="order-1 mt-8 flex flex-col items-center lg:order-2 lg:mt-0">
-          <div className="group relative mx-auto w-56 rotate-3 rounded-2xl border border-white/10 bg-white/5 p-2 shadow-2xl transition-transform duration-500 hover:rotate-0 md:w-80 xl:w-[25rem]">
-            <div className="absolute -top-5 -right-2 z-20 inline-flex items-center gap-2 rounded-full border border-green-500/30 bg-green-950/90 px-3 py-1.5 text-[10px] font-bold tracking-widest text-green-400 uppercase shadow-lg backdrop-blur-md md:text-xs"><span className="relative flex h-2 w-2"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" /><span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" /></span>Disponível</div>
-            <div className="relative aspect-[4/5] overflow-hidden rounded-lg bg-brand-card"><Image src="/profile/ezequiel-profile.png" alt={profile.name} fill priority sizes="(max-width: 768px) 224px, (max-width: 1280px) 320px, 400px" className="object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-105" /></div>
+          <div className="relative mx-auto flex aspect-square w-64 items-center justify-center sm:w-[22rem] lg:w-[25rem]">
+            <OrbitingTechnologies />
+            <div className="group relative z-10 w-[72%] rotate-3 rounded-2xl border border-white/10 bg-white/5 p-2 shadow-2xl transition-transform duration-500 hover:rotate-0">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-lg bg-brand-card"><Image src="/profile/ezequiel-profile.png" alt={profile.name} fill priority sizes="(max-width: 640px) 208px, (max-width: 1280px) 254px, 288px" className="object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-105" /></div>
+            </div>
           </div>
         </div>
       </div>
