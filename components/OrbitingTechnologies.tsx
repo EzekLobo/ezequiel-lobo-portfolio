@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import type { IconType } from "react-icons";
-import { SiDotnet, SiGit, SiNextdotjs, SiPython, SiReact, SiTypescript } from "react-icons/si";
+import { FaDatabase } from "react-icons/fa6";
+import { SiDocker, SiDotnet, SiGit, SiNextdotjs, SiPython, SiReact, SiTypescript } from "react-icons/si";
 
 type Technology = {
   label: string;
@@ -10,15 +11,17 @@ type Technology = {
 };
 
 const innerRing: Technology[] = [
-  { label: "TypeScript", Icon: SiTypescript, color: "#3178c6", angle: 8 },
-  { label: "React", Icon: SiReact, color: "#61dafb", angle: 128 },
-  { label: "Next.js", Icon: SiNextdotjs, color: "#f5f5f5", angle: 248 },
+  { label: "TypeScript", Icon: SiTypescript, color: "#3178c6", angle: 0 },
+  { label: "React", Icon: SiReact, color: "#61dafb", angle: 90 },
+  { label: "Next.js", Icon: SiNextdotjs, color: "#f5f5f5", angle: 180 },
+  { label: "ASP.NET", Icon: SiDotnet, color: "#a974d8", angle: 270 },
 ];
 
 const outerRing: Technology[] = [
-  { label: "Python", Icon: SiPython, color: "#ffd343", angle: 42 },
-  { label: ".NET", Icon: SiDotnet, color: "#a974d8", angle: 162 },
-  { label: "Git", Icon: SiGit, color: "#f1502f", angle: 282 },
+  { label: "Python", Icon: SiPython, color: "#ffd343", angle: 20 },
+  { label: "Docker", Icon: SiDocker, color: "#2496ed", angle: 110 },
+  { label: "SQL", Icon: FaDatabase, color: "#a9d8ff", angle: 200 },
+  { label: "Git", Icon: SiGit, color: "#f1502f", angle: 290 },
 ];
 
 function Orbit({ technologies, className }: { technologies: Technology[]; className: string }) {
@@ -41,7 +44,7 @@ function Orbit({ technologies, className }: { technologies: Technology[]; classN
 
 export default function OrbitingTechnologies() {
   return (
-    <div className="pointer-events-none absolute inset-[-19%]" aria-label="Tecnologias principais: TypeScript, React, Next.js, Python, .NET e Git">
+    <div className="pointer-events-none absolute inset-[-19%]" aria-label="Tecnologias principais: TypeScript, React, Next.js, ASP.NET, Python, Docker, SQL e Git">
       <span className="tech-orbit-ring tech-orbit-ring--inner" />
       <span className="tech-orbit-ring tech-orbit-ring--outer" />
       <Orbit technologies={innerRing} className="tech-orbit tech-orbit--inner" />
