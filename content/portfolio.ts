@@ -9,7 +9,7 @@ export const profile = {
     "Atuo no desenvolvimento de sistemas, transformando ideias, necessidades e problemas do dia a dia em soluções de software, partindo da compreensão das demandas para organizar regras de negócio e desenvolver aplicações que apoiem pessoas e processos.",
   phone: "(73) 99168-8956",
   location: "Ilhéus, BA",
-  email: "ezeklobo@gmail.com",
+  email: "ezeklobo.dev@gmail.com",
   github: "https://github.com/EzekLobo",
   linkedin: "https://www.linkedin.com/in/ezequiel-lobo-a1336b326/",
 };
