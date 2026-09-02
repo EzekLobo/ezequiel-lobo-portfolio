@@ -19,7 +19,7 @@ export default function Hero() {
               <span className="bg-gradient-to-r from-white via-gray-200 to-gray-600 bg-clip-text text-transparent">{restOfName}.</span>
             </h1>
             <h2 className="pt-2 font-mono text-sm font-medium text-brand-red sm:text-lg md:text-2xl"><span aria-hidden="true" className="text-white/70">&lt; </span>{profile.role}<span aria-hidden="true" className="text-white/70"> /&gt;</span></h2>
-            <p className="font-mono text-[11px] tracking-wide text-gray-500 uppercase sm:text-xs">{profile.headline}</p>
+            <p className="text-center font-mono text-[11px] tracking-wide text-gray-500 uppercase sm:text-xs">{profile.headline}</p>
           </div>
           <p className="mx-auto max-w-lg border-l-4 border-brand-red/50 pl-4 text-base leading-relaxed text-gray-400 md:text-lg lg:mx-0">{profile.introduction}</p>
           <div className="flex flex-nowrap justify-center gap-3 pt-2 lg:justify-start">
