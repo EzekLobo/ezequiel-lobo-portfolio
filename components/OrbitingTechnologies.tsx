@@ -1,7 +1,8 @@
 import type { CSSProperties } from "react";
 import type { IconType } from "react-icons";
 import { FaDatabase } from "react-icons/fa6";
-import { SiDocker, SiDotnet, SiGit, SiNextdotjs, SiPython, SiReact, SiSharp, SiTypescript } from "react-icons/si";
+import { TbBrandCSharp } from "react-icons/tb";
+import { SiDocker, SiDotnet, SiGit, SiNextdotjs, SiPython, SiReact, SiTypescript } from "react-icons/si";
 
 type Technology = {
   label: string;
@@ -15,7 +16,7 @@ const innerRing: Technology[] = [
   { label: "React", Icon: SiReact, color: "#61dafb", angle: 72 },
   { label: "Next.js", Icon: SiNextdotjs, color: "#f5f5f5", angle: 144 },
   { label: "ASP.NET", Icon: SiDotnet, color: "#a974d8", angle: 216 },
-  { label: "C#", Icon: SiSharp, color: "#512bd4", angle: 288 },
+  { label: "C#", Icon: TbBrandCSharp, color: "#512bd4", angle: 288 },
 ];
 
 const outerRing: Technology[] = [
