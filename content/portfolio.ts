@@ -64,6 +64,15 @@ export const projects: Project[] = [
     eyebrow: "Projeto legado · IA generativa",
     summary:
       "Engenharia de Prompts e colaboração IA-Humano, documentando a criação de produtos digitais como o Podcast Devboot e o ebook Destravando a Lógica. Utiliza frameworks avançados de Persona & Contexto e Chain-of-Thought para garantir saídas multimodais profissionais em texto, imagem e áudio.",
+    problem:
+      "Transformar conceitos de IA generativa em produtos digitais documentados e com saídas multimodais consistentes.",
+    contribution:
+      "Documentei experimentos de engenharia de prompts, definição de persona e contexto e produção de materiais em texto, imagem e áudio.",
+    evidence: [
+      "Podcast Devboot e ebook Destravando a Lógica",
+      "Frameworks de Persona & Contexto e Chain-of-Thought",
+      "Saídas multimodais documentadas",
+    ],
     technologies: ["Gemini 1.5 Pro", "GPT-4", "IA Voice Design"],
     repository: "https://github.com/EzekLobo/Fundamentos_IA_Generativa-Universia",
     image: "/projects/legacy/fundamentos-ia-generativa.jpg",
@@ -94,6 +103,15 @@ export const projects: Project[] = [
     eyebrow: "Projeto legado · APIs .NET",
     summary:
       "API de gestão de correntistas desenvolvida em .NET sob arquitetura de microserviços. O projeto foca no isolamento de domínios e bancos de dados independentes por equipe.",
+    problem:
+      "Organizar uma API de correntistas com domínios e dados isolados entre equipes.",
+    contribution:
+      "Desenvolvi a API .NET com separação de responsabilidades, persistência com Entity Framework Core e documentação dos endpoints.",
+    evidence: [
+      ".NET 7 e Entity Framework Core",
+      "API de pessoas e correntistas com migrations",
+      "Swagger para documentação dos endpoints",
+    ],
     technologies: [".NET", "Entity Framework Core", "SQL Server", "Swagger", "Docker"],
     repository: "https://github.com/EzekLobo/Cepedi.Banco.Pessoa-ResTIC18",
     image: "/projects/legacy/sistema-bancario.jpg",
@@ -104,6 +122,15 @@ export const projects: Project[] = [
     eyebrow: "Projeto legado · IoT em tempo real",
     summary:
       "Projeto de IoT E2E integrado ao ecossistema Full Stack (Django/Next.js) que permite aos visitantes do portfólio monitorar o clima do laboratório e interagir diretamente com o hardware em tempo real.",
+    problem:
+      "Conectar hardware IoT a uma aplicação web para disponibilizar telemetria e interação em tempo real.",
+    contribution:
+      "Integrei o Raspberry Pi Pico W e MicroPython ao ecossistema Django/Next.js para leitura ambiental e interação com o dispositivo.",
+    evidence: [
+      "Monitoramento de temperatura e umidade",
+      "Interação com hardware Pico W",
+      "Fluxo integrado entre backend, frontend e dispositivo",
+    ],
     technologies: ["Raspberry Pi Pico W", "MicroPython"],
     repository: "https://wokwi.com/projects/457570469064366081",
     image: "/projects/legacy/ecosync-iot.png",
