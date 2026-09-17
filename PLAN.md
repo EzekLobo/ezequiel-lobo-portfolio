@@ -37,17 +37,20 @@
 - **Tarefa 5 — Dados estáticos consolidados:** unir projetos legados e atuais sem duplicidade de repositório, excluindo apenas o projeto do portfólio, e tornar os metadados ricos opcionais no tipo `Project`.
   - **Aceitação:** lista final contém InventoryRFID, AulaPay, Fundamentos de IA Generativa, Go, Sistema Bancário e EcoSync; o projeto `Projeto_Portfolio_Dinamico` não aparece; repositórios são únicos.
   - **Dependências:** Tarefa 4.
-  - [ ] Pendente
+  - [x] Validado: seis cards, seis repositórios únicos e o projeto do portfólio excluído.
 - **Tarefa 6 — Carrossel alinhado ao legado:** substituir o layout de molduras detalhadas pelo card de `75vw`/`24rem` por `420px`, capa de `208px`, flip, previews, navegação circular, arraste, roda, teclado e indicadores.
   - **Aceitação:** cards ativos/laterais têm escala e opacidade distintas; capas locais carregam; frente e verso funcionam; mobile não apresenta overflow horizontal.
   - **Dependências:** Tarefa 5.
-  - [ ] Pendente
+  - [x] Validado: layout legado, capas locais, flip, previews laterais, setas e indicadores aplicados.
 - **Tarefa 7 — Verificação final:** executar lint, build e inspeção visual desktop/mobile.
   - **Aceitação:** `npm.cmd run lint` e `npm.cmd run build` passam; interações do carrossel são verificadas; alterações locais preexistentes permanecem intactas.
   - **Dependências:** Tarefas 5 e 6.
-  - [ ] Pendente
+  - [x] Validado: lint/build passaram; desktop e `390×844` foram inspecionados sem overflow ou erros de console; CV e `tmp/pdfs/` preservados.
 
 ## Log de handoff — plano atual
 
 - Export recuperado da API antiga em 17/09/2026; o registro do portfólio será excluído e o link duplicado do Sistema Bancário será normalizado para `Cepedi.Banco.Pessoa-ResTIC18`.
 - Tarefa 4 concluída: `tmp/legacy-import/projects.json` preserva os 5 registros da API; o portfólio foi identificado para exclusão e as quatro capas migráveis foram salvas em `public/projects/legacy/`.
+- Tarefa 5 concluída: os projetos atuais e legados foram consolidados em `content/portfolio.ts`; o link duplicado do Sistema Bancário foi corrigido para o repositório público correspondente e os campos ricos de `Project` tornaram-se opcionais.
+- Tarefa 6 concluída: `ProjectCarousel` agora usa cards de `75vw`/`24rem` por `420px`, capas de `208px`, flip, previews laterais, loop, setas, dots, teclado e wheel, mantendo as imagens locais.
+- Tarefa 7 concluída: `npm.cmd run lint` e `npm.cmd run build` passaram; a inspeção visual confirmou seis cards, capas carregadas, flip, navegação e ausência de overflow em desktop e mobile.

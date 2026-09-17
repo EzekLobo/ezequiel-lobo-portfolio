@@ -60,10 +60,20 @@ export const projects: Project[] = [
     imageAlt: "Tela inicial do aplicativo AulaPay com aulas e turmas",
   },
   {
-    title: "Go distribuído 9×9",
+    title: "Fundamentos de IA Generativa",
+    eyebrow: "Projeto legado · IA generativa",
+    summary:
+      "Engenharia de Prompts e colaboração IA-Humano, documentando a criação de produtos digitais como o Podcast Devboot e o ebook Destravando a Lógica. Utiliza frameworks avançados de Persona & Contexto e Chain-of-Thought para garantir saídas multimodais profissionais em texto, imagem e áudio.",
+    technologies: ["Gemini 1.5 Pro", "GPT-4", "IA Voice Design"],
+    repository: "https://github.com/EzekLobo/Fundamentos_IA_Generativa-Universia",
+    image: "/projects/legacy/fundamentos-ia-generativa.jpg",
+    imageAlt: "Capa do projeto Fundamentos de IA Generativa",
+  },
+  {
+    title: "Jogo de Go Distribuído (9x9)",
     eyebrow: "Projeto acadêmico · Sistemas distribuídos",
     summary:
-      "Jogo de Go para dois jogadores em máquinas diferentes, com interface gráfica e comunicação RPC em Python.",
+      "Sistema P2P distribuído para o jogo Go, utilizando RPC (Remote Procedure Call) para comunicação entre máquinas.",
     problem:
       "Sincronizar regras, turnos e estado de uma partida entre dois processos conectados pela rede.",
     contribution:
@@ -73,10 +83,30 @@ export const projects: Project[] = [
       "Algoritmo flood-fill para cálculo de território",
       "Testes unitários das regras do jogo",
     ],
-    technologies: ["Python", "XML-RPC", "Tkinter", "Threading", "Unittest"],
+    technologies: ["Python", "XML-RPC", "Tkinter", "Multithreading", "Unittest"],
     repository: "https://github.com/EzekLobo/Sistemas_Distribuidos-UESC",
-    image: "/projects/go-distribuido-preview.svg",
+    image: "/projects/legacy/go-distribuido.jpg",
     presentation: "desktop",
     imageAlt: "Tabuleiro de Go com comunicação distribuída entre host e cliente",
+  },
+  {
+    title: "Sistema Bancário",
+    eyebrow: "Projeto legado · APIs .NET",
+    summary:
+      "API de gestão de correntistas desenvolvida em .NET sob arquitetura de microserviços. O projeto foca no isolamento de domínios e bancos de dados independentes por equipe.",
+    technologies: [".NET", "Entity Framework Core", "SQL Server", "Swagger", "Docker"],
+    repository: "https://github.com/EzekLobo/Cepedi.Banco.Pessoa-ResTIC18",
+    image: "/projects/legacy/sistema-bancario.jpg",
+    imageAlt: "Capa do projeto Sistema Bancário",
+  },
+  {
+    title: "EcoSync IoT",
+    eyebrow: "Projeto legado · IoT em tempo real",
+    summary:
+      "Projeto de IoT E2E integrado ao ecossistema Full Stack (Django/Next.js) que permite aos visitantes do portfólio monitorar o clima do laboratório e interagir diretamente com o hardware em tempo real.",
+    technologies: ["Raspberry Pi Pico W", "MicroPython"],
+    repository: "https://wokwi.com/projects/457570469064366081",
+    image: "/projects/legacy/ecosync-iot.png",
+    imageAlt: "Interface do projeto EcoSync IoT",
   },
 ];
