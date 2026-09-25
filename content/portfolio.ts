@@ -55,9 +55,9 @@ export const projects: Project[] = [
     ],
     technologies: ["React Native", "Expo", "TypeScript", "SQLite", "Vitest"],
     repositoryNote: "Código privado por obrigações contratuais",
-    image: "/projects/aulapay-preview.svg",
+    image: "/projects/aulapay-dashboard.jpeg",
     presentation: "mobile",
-    imageAlt: "Interface conceitual do aplicativo AulaPay",
+    imageAlt: "Tela inicial do aplicativo AulaPay com aulas e turmas",
   },
   {
     title: "Fundamentos de IA Generativa",

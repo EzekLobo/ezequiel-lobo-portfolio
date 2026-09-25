@@ -107,8 +107,7 @@ function ProjectCard({ project, active }: { project: Project; active: boolean })
       <div data-project-content className="flex flex-col p-6 md:p-7">
         <header>
           <p className="font-mono text-[10px] tracking-wider text-brand-red uppercase">{project.eyebrow}</p>
-          <h3 className="mt-2 text-3xl font-bold tracking-tight text-white md:text-4xl">{project.title}</h3>
-          <p className="mt-3 text-sm leading-5 text-gray-300">{project.summary}</p>
+          <p className="mt-2 text-sm leading-5 text-gray-300">{project.summary}</p>
         </header>
 
         <dl className="mt-5 grid gap-3 md:grid-cols-2">
@@ -133,7 +132,11 @@ function ProjectCard({ project, active }: { project: Project; active: boolean })
 
 function ProjectVisual({ project }: { project: Project }) {
   if (!project.image) return null;
-  return <div className={`project-visual project-visual--${project.presentation ?? "desktop"}`}><ProjectDevice project={project} /></div>;
+  return <div className={`project-visual project-visual--${project.presentation ?? "desktop"}`}><ProjectTitleOverlay title={project.title} /><ProjectDevice project={project} /></div>;
+}
+
+function ProjectTitleOverlay({ title }: { title: string }) {
+  return <h3 className="absolute top-4 left-4 z-20 max-w-[calc(100%-2rem)] rounded-lg bg-black/80 px-3 py-2 text-2xl font-bold tracking-tight text-white shadow-lg backdrop-blur-sm md:top-6 md:left-6 md:text-3xl">{title}</h3>;
 }
 
 function ProjectDevice({ project, preview = false }: { project: Project; preview?: boolean }) {
@@ -151,5 +154,5 @@ function ProjectDevice({ project, preview = false }: { project: Project; preview
 
 function ProjectPreview({ project }: { project: Project }) {
   if (!project.image) return null;
-  return <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 grid place-items-center bg-brand-card/95 p-8"><ProjectDevice project={project} preview /></div>;
+  return <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 grid place-items-center bg-brand-card/95 p-8"><ProjectTitleOverlay title={project.title} /><ProjectDevice project={project} preview /></div>;
 }
