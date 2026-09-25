@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Prévia do NexoStudy</title>
+  <desc id="desc">Interface conceitual de estudo ativo com flashcard, progresso e referência documental.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#111827"/>
+      <stop offset="1" stop-color="#07090e"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#172033"/>
+      <stop offset="1" stop-color="#0b1120"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#ff6767"/>
+      <stop offset="1" stop-color="#d83a52"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-20%" width="160%" height="150%">
+      <feDropShadow dx="0" dy="26" stdDeviation="24" flood-color="#000" flood-opacity=".55"/>
+    </filter>
+  </defs>
+  <rect width="720" height="1000" fill="url(#background)"/>
+  <circle cx="650" cy="110" r="240" fill="#ff4d4d" opacity=".12"/>
+  <circle cx="60" cy="910" r="255" fill="#60a5fa" opacity=".1"/>
+  <text x="70" y="88" fill="#ff7474" font-family="monospace" font-size="18" font-weight="700" letter-spacing="3">ESTUDO ATIVO</text>
+  <text x="70" y="128" fill="#f8fafc" font-family="Arial, sans-serif" font-size="36" font-weight="700">NexoStudy</text>
+  <g filter="url(#shadow)">
+    <rect x="110" y="180" width="500" height="730" rx="48" fill="#05070b" stroke="#526178" stroke-width="4"/>
+    <rect x="131" y="220" width="458" height="650" rx="34" fill="url(#screen)"/>
+    <rect x="294" y="196" width="132" height="12" rx="6" fill="#334155"/>
+    <text x="168" y="280" fill="#94a3b8" font-family="Arial, sans-serif" font-size="16">METODOLOGIA CIENTÍFICA</text>
+    <text x="168" y="320" fill="#f8fafc" font-family="Arial, sans-serif" font-size="28" font-weight="700">Sessão de estudo</text>
+    <rect x="168" y="348" width="384" height="10" rx="5" fill="#273449"/>
+    <rect x="168" y="348" width="252" height="10" rx="5" fill="url(#accent)"/>
+    <text x="168" y="395" fill="#ff7474" font-family="monospace" font-size="15" font-weight="700">FLASHCARD 08/12</text>
+    <rect x="158" y="420" width="404" height="240" rx="24" fill="#1b2639" stroke="#3b4b63" stroke-width="2"/>
+    <text x="190" y="470" fill="#94a3b8" font-family="Arial, sans-serif" font-size="15">EXPLIQUE COM SUAS PALAVRAS</text>
+    <text x="190" y="525" fill="#f8fafc" font-family="Arial, sans-serif" font-size="25" font-weight="700">Qual é a função de uma</text>
+    <text x="190" y="560" fill="#f8fafc" font-family="Arial, sans-serif" font-size="25" font-weight="700">hipótese científica?</text>
+    <rect x="190" y="600" width="214" height="38" rx="19" fill="#26354c"/>
+    <text x="214" y="625" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="15">Mostrar resposta</text>
+    <rect x="158" y="686" width="404" height="92" rx="18" fill="#111827" stroke="#334155"/>
+    <text x="184" y="720" fill="#60a5fa" font-family="monospace" font-size="14" font-weight="700">FONTE RASTREÁVEL</text>
+    <text x="184" y="752" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="16">Documento 2 · página 14</text>
+    <rect x="158" y="802" width="118" height="42" rx="14" fill="#202d41"/>
+    <rect x="290" y="802" width="118" height="42" rx="14" fill="#202d41"/>
+    <rect x="422" y="802" width="140" height="42" rx="14" fill="url(#accent)"/>
+    <text x="180" y="829" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="14">Não lembro</text>
+    <text x="315" y="829" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="14">Parcial</text>
+    <text x="446" y="829" fill="#fff" font-family="Arial, sans-serif" font-size="14" font-weight="700">Sei explicar</text>
+  </g>
+</svg>

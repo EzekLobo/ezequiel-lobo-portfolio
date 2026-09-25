@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Prévia conceitual do backend de gestão de inventários</title>
+  <desc id="desc">Painel técnico com endpoints, camadas da aplicação e status dos serviços.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#121722"/>
+      <stop offset="1" stop-color="#07090e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#ff6767"/>
+      <stop offset="1" stop-color="#d83a52"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000" flood-opacity=".5"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="760" fill="url(#bg)"/>
+  <circle cx="1100" cy="80" r="260" fill="#ff4d4d" opacity=".1"/>
+  <circle cx="80" cy="700" r="260" fill="#60a5fa" opacity=".08"/>
+  <g filter="url(#shadow)">
+    <rect x="92" y="100" width="1016" height="570" rx="28" fill="#111827" stroke="#334155" stroke-width="2"/>
+    <rect x="92" y="100" width="1016" height="76" rx="28" fill="#182235"/>
+    <rect x="92" y="150" width="1016" height="26" fill="#182235"/>
+    <circle cx="132" cy="138" r="9" fill="#ff6767"/>
+    <circle cx="162" cy="138" r="9" fill="#fbbf24"/>
+    <circle cx="192" cy="138" r="9" fill="#34d399"/>
+    <text x="240" y="147" fill="#f8fafc" font-family="monospace" font-size="20" font-weight="700">inventory-api / swagger</text>
+    <rect x="122" y="206" width="214" height="426" rx="18" fill="#0d1422" stroke="#29364a"/>
+    <text x="148" y="246" fill="#94a3b8" font-family="monospace" font-size="15">CAMADAS</text>
+    <rect x="142" y="275" width="174" height="58" rx="12" fill="#26354c"/>
+    <text x="166" y="311" fill="#f8fafc" font-family="Arial, sans-serif" font-size="19" font-weight="700">API</text>
+    <rect x="142" y="351" width="174" height="58" rx="12" fill="#202d41"/>
+    <text x="166" y="387" fill="#f8fafc" font-family="Arial, sans-serif" font-size="19" font-weight="700">Business</text>
+    <rect x="142" y="427" width="174" height="58" rx="12" fill="#1c283b"/>
+    <text x="166" y="463" fill="#f8fafc" font-family="Arial, sans-serif" font-size="19" font-weight="700">Data</text>
+    <path d="M229 333v18M229 409v18" stroke="#ff6767" stroke-width="4" stroke-linecap="round"/>
+    <rect x="142" y="526" width="174" height="70" rx="12" fill="#111827" stroke="#334155"/>
+    <text x="166" y="556" fill="#60a5fa" font-family="monospace" font-size="14">SQL SERVER</text>
+    <text x="166" y="580" fill="#94a3b8" font-family="Arial, sans-serif" font-size="14">EF Core · Migrations</text>
+    <text x="382" y="226" fill="#94a3b8" font-family="monospace" font-size="15">ENDPOINTS</text>
+    <rect x="376" y="248" width="684" height="74" rx="14" fill="#172234" stroke="#334155"/>
+    <rect x="398" y="269" width="64" height="32" rx="8" fill="#166534"/>
+    <text x="413" y="291" fill="#dcfce7" font-family="monospace" font-size="15" font-weight="700">GET</text>
+    <text x="490" y="292" fill="#f8fafc" font-family="monospace" font-size="18">/api/inventarios</text>
+    <rect x="376" y="340" width="684" height="74" rx="14" fill="#172234" stroke="#334155"/>
+    <rect x="398" y="361" width="70" height="32" rx="8" fill="#1d4ed8"/>
+    <text x="409" y="383" fill="#dbeafe" font-family="monospace" font-size="15" font-weight="700">POST</text>
+    <text x="490" y="384" fill="#f8fafc" font-family="monospace" font-size="18">/api/snapshots</text>
+    <rect x="376" y="432" width="684" height="74" rx="14" fill="#172234" stroke="#334155"/>
+    <rect x="398" y="453" width="70" height="32" rx="8" fill="#92400e"/>
+    <text x="408" y="475" fill="#fef3c7" font-family="monospace" font-size="15" font-weight="700">AUTH</text>
+    <text x="490" y="476" fill="#f8fafc" font-family="monospace" font-size="18">JWT · Keycloak</text>
+    <rect x="376" y="540" width="210" height="64" rx="14" fill="#102a24" stroke="#166534"/>
+    <circle cx="410" cy="572" r="8" fill="#34d399"/>
+    <text x="430" y="579" fill="#d1fae5" font-family="Arial, sans-serif" font-size="17" font-weight="700">API saudável</text>
+    <rect x="602" y="540" width="210" height="64" rx="14" fill="#15233a" stroke="#1d4ed8"/>
+    <circle cx="636" cy="572" r="8" fill="#60a5fa"/>
+    <text x="656" y="579" fill="#dbeafe" font-family="Arial, sans-serif" font-size="17" font-weight="700">Docker</text>
+    <rect x="828" y="540" width="232" height="64" rx="14" fill="url(#accent)" opacity=".92"/>
+    <text x="858" y="579" fill="#fff" font-family="Arial, sans-serif" font-size="17" font-weight="700">Backend .NET 9</text>
+  </g>
+</svg>

@@ -40,6 +40,26 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    title: "Gestão de Inventários — Backend",
+    eyebrow: "Residência TIC36 · Backend .NET · Projeto em parceria",
+    summary:
+      "API para um sistema corporativo de gestão de inventários, desenvolvida durante a Residência TIC36 em parceria com a Daten.",
+    problem:
+      "Estruturar um backend seguro e persistente para registrar e consultar informações de inventário em um ambiente integrado a outros serviços.",
+    contribution:
+      "Atuei na implementação da API em arquitetura por camadas, persistência com Entity Framework Core e SQL Server, documentação dos endpoints e integração da autenticação JWT com Keycloak.",
+    evidence: [
+      "Separação entre API, regras de negócio e acesso a dados",
+      "Autenticação e autorização integradas ao Keycloak",
+      "Migrations, documentação Swagger e execução conteinerizada",
+    ],
+    technologies: [".NET 9", "ASP.NET Core", "Entity Framework Core", "SQL Server", "Keycloak", "Docker"],
+    repositoryNote: "Código privado por obrigações contratuais",
+    image: "/projects/inventory-backend-preview.svg",
+    presentation: "desktop",
+    imageAlt: "Representação conceitual da API de gestão de inventários",
+  },
+  {
     title: "AulaPay",
     eyebrow: "Produto pessoal · Aplicativo mobile",
     summary:
@@ -58,6 +78,26 @@ export const projects: Project[] = [
     image: "/projects/aulapay-dashboard.jpeg",
     presentation: "mobile",
     imageAlt: "Tela inicial do aplicativo AulaPay com aulas e turmas",
+  },
+  {
+    title: "NexoStudy",
+    eyebrow: "Produto pessoal · Educação · Android",
+    summary:
+      "Aplicativo Android offline que transforma documentos acadêmicos em uma experiência de estudo ativo com flashcards, quizzes e revisão de erros.",
+    problem:
+      "Revisar materiais extensos sem perder a ligação entre perguntas, respostas e suas fontes torna o estudo menos confiável e difícil de organizar.",
+    contribution:
+      "Desenvolvi a interface em Jetpack Compose, estruturei o conteúdo com referência ao PDF, página e trecho-base e implementei progresso local, metacognição e validações automatizadas.",
+    evidence: [
+      "Flashcards, quizzes e revisão de erros com fonte rastreável",
+      "Funcionamento 100% offline e progresso salvo localmente",
+      "Testes de integridade do conteúdo e ausência de permissão de internet",
+    ],
+    technologies: ["Kotlin", "Jetpack Compose", "Android", "JSON", "JUnit"],
+    repository: "https://github.com/EzekLobo/Metodologia",
+    image: "/projects/nexostudy-preview.svg",
+    presentation: "mobile",
+    imageAlt: "Interface conceitual do aplicativo NexoStudy com flashcard e referência documental",
   },
   {
     title: "Fundamentos de IA Generativa",
