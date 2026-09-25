@@ -7,6 +7,7 @@ export type Project = {
   evidence?: string[];
   technologies: string[];
   repository?: string;
+  repositoryNote?: string;
   demo?: string;
   image?: string;
   imageAlt?: string;

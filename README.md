@@ -7,7 +7,7 @@ técnicas, tecnologias e links verificáveis.
 ## Para recrutadores
 
 - [InventoryRFID](https://github.com/EzekLobo/inventory-rfid): protótipo web de inventário patrimonial com API Django REST, frontend Next.js, integração RFID, auditorias e histórico operacional.
-- [AulaPay](https://github.com/EzekLobo/professor-pay-app): aplicativo React Native para acompanhamento de aulas e pagamentos, com persistência SQLite e testes com Vitest.
+- AulaPay: aplicativo React Native para acompanhamento de aulas e pagamentos, com persistência SQLite e testes com Vitest. Código privado por obrigações contratuais.
 - [Go distribuído 9×9](https://github.com/EzekLobo/Sistemas_Distribuidos-UESC): aplicação Python com XML-RPC, concorrência e testes unitários para regras de um jogo distribuído.
 
 O currículo atualizado está disponível pelo botão **Baixar CV** na página.

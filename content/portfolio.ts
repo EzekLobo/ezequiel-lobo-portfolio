@@ -54,10 +54,10 @@ export const projects: Project[] = [
       "Testes automatizados com Vitest",
     ],
     technologies: ["React Native", "Expo", "TypeScript", "SQLite", "Vitest"],
-    repository: "https://github.com/EzekLobo/professor-pay-app",
-    image: "/projects/aulapay-dashboard.jpeg",
+    repositoryNote: "Código privado por obrigações contratuais",
+    image: "/projects/aulapay-preview.svg",
     presentation: "mobile",
-    imageAlt: "Tela inicial do aplicativo AulaPay com aulas e turmas",
+    imageAlt: "Interface conceitual do aplicativo AulaPay",
   },
   {
     title: "Fundamentos de IA Generativa",
